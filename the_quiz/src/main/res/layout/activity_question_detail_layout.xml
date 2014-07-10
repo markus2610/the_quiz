@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/app_background">
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/editButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/edit_button"
+            android:clickable="true"
+            android:onClick="onEditQuestionClicked"/>
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/editButton"
+            android:layout_above="@+id/group_done_button">
+
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/question_title"
+                    android:id="@+id/question_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/question_title"
+                    android:id="@+id/question_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/question_title"
+                        android:singleLine="true"
+                        android:id="@+id/question_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textCapWords"
+                        android:id="@+id/question_edittext"/>
+
+
+            </ViewSwitcher>
+
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/question_switcher"
+                    android:text="@string/option_one_title"
+                    android:id="@+id/option_one_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_one_title"
+                    android:id="@+id/option_one_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/option_one_title"
+                        android:singleLine="true"
+                        android:id="@+id/option_one_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:inputType="textCapWords"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/option_one_edittext"/>
+
+
+            </ViewSwitcher>
+
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_one_switcher"
+                    android:text="@string/option_two_title"
+                    android:id="@+id/option_two_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_two_title"
+                    android:id="@+id/option_two_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/option_two_title"
+                        android:singleLine="true"
+                        android:id="@+id/option_two_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textCapWords"
+                        android:id="@+id/option_two_edittext"/>
+
+
+            </ViewSwitcher>
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_two_switcher"
+                    android:text="@string/option_three_title"
+                    android:id="@+id/option_three_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_three_title"
+                    android:id="@+id/option_three_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/option_three_title"
+                        android:singleLine="true"
+                        android:id="@+id/option_three_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textCapWords"
+                        android:id="@+id/option_three_edittext"/>
+
+
+            </ViewSwitcher>
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_three_switcher"
+                    android:text="@string/option_four_title"
+                    android:id="@+id/option_four_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_four_title"
+                    android:id="@+id/option_four_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/option_four_title"
+                        android:singleLine="true"
+                        android:id="@+id/option_four_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textCapWords"
+                        android:id="@+id/option_four_edittext"/>
+
+
+            </ViewSwitcher>
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/option_four_switcher"
+                    android:text="@string/right_answer_title"
+                    android:id="@+id/right_answer_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/right_answer_title"
+                    android:id="@+id/answer_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/right_answer_title"
+                        android:singleLine="true"
+                        android:id="@+id/right_answer_text"/>
+
+
+                <Spinner
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:id="@+id/answer_spinner"/>
+
+
+            </ViewSwitcher>
+
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/answer_switcher"
+                    android:text="@string/difficulty_title"
+                    android:id="@+id/difficulty_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/difficulty_title"
+                    android:id="@+id/difficulty_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/difficulty_title"
+                        android:singleLine="true"
+                        android:id="@+id/difficulty_text"/>
+
+
+                <Spinner
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:id="@+id/difficulty_spinner"/>
+
+
+            </ViewSwitcher>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="@string/general_done_button"
+            android:id="@+id/group_done_button"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="onQuestionDoneClicked"
+            android:clickable="true"/>
+
+
+</RelativeLayout>

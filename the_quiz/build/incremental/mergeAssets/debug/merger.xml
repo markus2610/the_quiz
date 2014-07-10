@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/debug/assets" />
+    </dataSet>
+
+</merger>

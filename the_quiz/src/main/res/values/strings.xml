@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TheQuiz</string>
+
+    <!-- General Strings-->
+    <string name="general_coming_soon_string">Coming Soon</string>
+    <string name="general_hours_string">hours</string>
+    <string name="general_done_button">Done</string>
+    <string name="general_failed_update">Failed to Update</string>
+
+    <!-- Default Strings-->
+    <string name="default_group">New Group</string>
+    <string name="default_player">New Player</string>
+    <string name="default_set">New Set</string>
+    <string name="default_question">New Question</string>
+
+    <!-- Home Screen -->
+    <string name="home_settings">Settings</string>
+    <string name="home_groups">Groups</string>
+    <string name="home_game">Start Game</string>
+    <string name="home_info">Info</string>
+
+    <!-- Group List Screen -->
+    <string name="empty_group_list">Please add new groups</string>
+
+    <!-- Group Detail Screen -->
+    <string name="empty_player_list">Please add new players</string>
+    <string name="empty_group_name">Click to add name</string>
+    <string name="failed_create_group">Failed to create group</string>
+
+    <!-- Player Detail Screen -->
+    <string name="first_name_title">First name</string>
+    <string name="last_name_title">Last name</string>
+    <string name="department_title">Department</string>
+
+    <!-- Questions List Screen -->
+    <string name="empty_sets_list">Please add new question sets</string>
+
+    <!-- Questions Set Screen -->
+    <string name="empty_set_name">Click to add a name</string>
+    <string name="empty_set_type">Click to add a type</string>
+    <string name="empty_question_list">Please add new questions</string>
+
+
+    <!-- Question Detail Screen -->
+    <string name="question_title">Question</string>
+    <string name="option_one_title">Option A</string>
+    <string name="option_two_title">Option B</string>
+    <string name="option_three_title">Option C</string>
+    <string name="option_four_title">Option D</string>
+    <string name="right_answer_title">Answer</string>
+    <string name="difficulty_title">Difficulty</string>
+
+
+    <!-- Game Screen -->
+    <string name="game_not_initialized">Game not initialized</string>
+    <string name="team_already_added">Team already added</string>
+    <string name="team_added">New team added</string>
+    <string name="team_removed">Team removed</string>
+    <string name="team_not_found">Team not found</string>
+
+</resources>

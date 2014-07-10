@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/app_background">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:id="@+id/option_start_game"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:onClick="onGameClicked"
+                android:background="@drawable/holo_button">
+
+            <TextView
+                    style="@style/home_option_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/home_game"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/option_groups"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:onClick="onGroupsClicked"
+                android:background="@drawable/holo_button">
+
+            <TextView
+                    style="@style/home_option_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/home_groups"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/option_settings"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:onClick="onSettingsClicked"
+                android:background="@drawable/holo_button">
+
+            <TextView
+                    style="@style/home_option_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/home_settings"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/option_info"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:onClick="onInfoClicked"
+                android:background="@drawable/holo_button">
+
+            <TextView
+                    style="@style/home_option_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/home_info"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

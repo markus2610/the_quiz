@@ -1,0 +1,19 @@
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="white_background">#ffffff</color>
+    <color name="black_background">#000000</color>
+
+    <color name="titlebar_text_color">#ffffff</color>
+    <color name="titlebar_text_shadow_color">#000033</color>
+
+    <color name="home_font_color">#ffffff</color>
+
+    <!-- rounded button colors -->
+    <color name="custom_button_inactive_start">#B9DB86</color>
+    <color name="custom_button_inactive_end">#E0F0CB</color>
+    <color name="custom_button_active_start">#E0F0CB</color>
+    <color name="custom_button_active_end">#B9DB86</color>
+
+</resources>

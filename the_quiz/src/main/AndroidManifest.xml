@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.thilek.android.qleneagles_quiz">
+
+    <application
+            android:name=".AppContext"
+            android:allowBackup="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme">
+        <activity
+                android:name=".activities.LaunchActivity"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".activities.HomeScreenActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activities.GroupListActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".activities.GroupDetailActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activities.PlayerDetailActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activities.SetListActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activities.SetDetailActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activities.QuestionDetailActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
+        </activity>
+
+    </application>
+
+</manifest>

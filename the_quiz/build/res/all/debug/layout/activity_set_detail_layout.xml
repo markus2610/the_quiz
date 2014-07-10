@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/app_background">
+
+    <RelativeLayout
+            android:id="@+id/set_info_layout"
+            android:layout_width="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_height="150dp">
+
+        <ViewSwitcher
+                android:id="@+id/set_name_switcher"
+                android:layout_width="fill_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="10dp">
+
+            <TextView
+                    style="@style/group_name_text"
+                    android:id="@+id/set_name_text"
+                    android:gravity="center"
+                    android:text="@string/empty_set_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="65dp"/>
+
+            <EditText
+                    style="@style/group_name_text"
+                    android:id="@+id/set_name_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="65dp"
+                    android:hint="@string/empty_set_name"
+                    android:gravity="center"
+                    android:inputType="textCapWords"/>
+        </ViewSwitcher>
+
+        <ViewSwitcher
+                android:layout_below="@+id/set_name_switcher"
+                android:id="@+id/set_type_switcher"
+                android:layout_width="fill_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="10dp">
+
+            <TextView
+                    style="@style/group_name_text"
+                    android:id="@+id/set_type_text"
+                    android:gravity="center"
+                    android:text="@string/empty_set_type"
+                    android:layout_width="fill_parent"
+                    android:layout_height="65dp"/>
+
+            <EditText
+                    style="@style/group_name_text"
+                    android:id="@+id/set_type_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="65dp"
+                    android:hint="@string/empty_set_type"
+                    android:gravity="center"
+                    android:inputType="textCapWords"/>
+        </ViewSwitcher>
+
+
+    </RelativeLayout>
+
+    <ImageView
+            android:id="@+id/edit_set_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/edit_button"
+            android:layout_below="@+id/set_info_layout"
+            android:layout_alignParentLeft="true"
+            android:clickable="true"
+            android:onClick="onEditSetClicked"
+            android:background="@drawable/image_background"/>
+
+    <ImageView
+            android:id="@+id/adding_question_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/add_button"
+            android:layout_below="@+id/set_info_layout"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:onClick="onAddQuestionClicked"
+            android:background="@drawable/image_background"/>
+
+
+    <TextView
+            android:layout_below="@id/adding_question_button"
+            style="@style/empty_list_text"
+            android:id="@+id/empty_list_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_question_list"
+            android:textIsSelectable="false"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+    <ListView
+            android:id="@android:id/list"
+            android:layout_margin="20dp"
+            android:background="@null"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@color/transparent"
+            android:dividerHeight="10dp"
+            android:layout_below="@+id/empty_list_text"
+            android:layout_above="@+id/set_done_button"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="@string/general_done_button"
+            android:id="@+id/set_done_button"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="onSetDoneClicked"
+            android:clickable="true"/>
+
+
+</RelativeLayout><!-- From: file:/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/layout/activity_set_detail_layout.xml -->

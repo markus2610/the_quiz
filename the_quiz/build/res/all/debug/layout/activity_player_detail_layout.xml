@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/app_background">
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/editButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/edit_button"
+            android:clickable="true"
+            android:onClick="onQuestionPlayerClicked"/>
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/editButton"
+            android:layout_above="@+id/group_done_button">
+
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/first_name_title"
+                    android:id="@+id/first_name_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/first_name_title"
+                    android:id="@+id/first_name_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/first_name_title"
+                        android:singleLine="true"
+                        android:id="@+id/first_name_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textCapWords"
+                        android:id="@+id/first_name_edittext"/>
+
+
+            </ViewSwitcher>
+
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/first_name_switcher"
+                    android:text="@string/last_name_title"
+                    android:id="@+id/last_name_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/last_name_title"
+                    android:id="@+id/last_name_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/last_name_title"
+                        android:singleLine="true"
+                        android:id="@+id/last_name_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:inputType="textCapWords"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/last_name_edittext"/>
+
+
+            </ViewSwitcher>
+
+
+            <TextView
+                    style="@style/player_detail_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/last_name_switcher"
+                    android:text="@string/department_title"
+                    android:id="@+id/department_title"/>
+
+            <ViewSwitcher
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/department_title"
+                    android:id="@+id/department_switcher">
+
+
+                <TextView
+                        style="@style/player_detail_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical|left"
+                        android:text="@string/department_title"
+                        android:singleLine="true"
+                        android:id="@+id/department_text"/>
+
+
+                <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:singleLine="true"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textCapWords"
+                        android:id="@+id/department_edittext"/>
+
+
+            </ViewSwitcher>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="@string/general_done_button"
+            android:id="@+id/group_done_button"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="onQuestionDoneClicked"
+            android:clickable="true"/>
+
+
+</RelativeLayout><!-- From: file:/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/layout/activity_player_detail_layout.xml -->
