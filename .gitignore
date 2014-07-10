@@ -27,4 +27,6 @@ local.properties
 /.idea/vcs.xml
 /.idea/uiDesigner.xml
 build/
+the_quiz/build/
+TheQuiz.iml
 
