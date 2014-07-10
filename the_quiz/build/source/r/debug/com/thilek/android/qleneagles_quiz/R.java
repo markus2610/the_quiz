@@ -149,21 +149,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int empty_sets_list=0x7f05000d;
         public static final int failed_create_group=0x7f05000e;
         public static final int first_name_title=0x7f05000f;
-        public static final int general_coming_soon_string=0x7f050010;
-        public static final int general_done_button=0x7f050011;
-        public static final int general_failed_update=0x7f050012;
-        public static final int general_hours_string=0x7f050013;
-        public static final int home_game=0x7f050014;
-        public static final int home_groups=0x7f050015;
-        public static final int home_info=0x7f050016;
-        public static final int home_settings=0x7f050017;
-        public static final int last_name_title=0x7f050018;
-        public static final int option_four_title=0x7f050019;
-        public static final int option_one_title=0x7f05001a;
-        public static final int option_three_title=0x7f05001b;
-        public static final int option_two_title=0x7f05001c;
-        public static final int question_title=0x7f05001d;
-        public static final int right_answer_title=0x7f05001e;
+        public static final int game_not_initialized=0x7f050010;
+        public static final int general_coming_soon_string=0x7f050011;
+        public static final int general_done_button=0x7f050012;
+        public static final int general_failed_update=0x7f050013;
+        public static final int general_hours_string=0x7f050014;
+        public static final int home_game=0x7f050015;
+        public static final int home_groups=0x7f050016;
+        public static final int home_info=0x7f050017;
+        public static final int home_settings=0x7f050018;
+        public static final int last_name_title=0x7f050019;
+        public static final int option_four_title=0x7f05001a;
+        public static final int option_one_title=0x7f05001b;
+        public static final int option_three_title=0x7f05001c;
+        public static final int option_two_title=0x7f05001d;
+        public static final int question_title=0x7f05001e;
+        public static final int right_answer_title=0x7f05001f;
+        public static final int team_added=0x7f050020;
+        public static final int team_already_added=0x7f050021;
+        public static final int team_not_found=0x7f050022;
+        public static final int team_removed=0x7f050023;
     }
     public static final class style {
         /**  Customize your theme here. 

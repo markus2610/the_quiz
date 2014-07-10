@@ -41,6 +41,7 @@
     <string name="empty_sets_list">Please add new question sets</string>
     <string name="failed_create_group">Failed to create group</string>
     <string name="first_name_title">First name</string>
+    <string name="game_not_initialized">Game not initialized</string>
     <string name="general_coming_soon_string">Coming Soon</string>
     <string name="general_done_button">Done</string>
     <string name="general_failed_update">Failed to Update</string>
@@ -56,6 +57,10 @@
     <string name="option_two_title">Option B</string>
     <string name="question_title">Question</string>
     <string name="right_answer_title">Answer</string>
+    <string name="team_added">New team added</string>
+    <string name="team_already_added">Team already added</string>
+    <string name="team_not_found">Team not found</string>
+    <string name="team_removed">Team removed</string>
     <!-- From: file:/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/values/styles.xml -->
     <eat-comment />
 

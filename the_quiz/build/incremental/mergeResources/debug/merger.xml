@@ -108,9 +108,9 @@
                 </color>
                 <color name="black_background" >#000000
                 </color>
-                <color name="transparent" >#00000000
-                </color>
                 <color name="home_font_color" >#ffffff
+                </color>
+                <color name="transparent" >#00000000
                 </color>
                 <color name="black_overlay" >#66000000
                 </color>
@@ -124,31 +124,39 @@
             <file
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/values/strings.xml"
                 qualifiers="" >
+                <string name="game_not_initialized" >Game not initialized
+                </string>
                 <string name="default_player" >New Player
                 </string>
+                <string name="team_already_added" >Team already added
+                </string>
                 <string name="first_name_title" >First name
+                </string>
+                <string name="team_added" >New team added
                 </string>
                 <string name="default_question" >New Question
                 </string>
                 <string name="question_title" >Question
                 </string>
-                <string name="home_groups" >Groups
+                <string name="general_hours_string" >hours
                 </string>
                 <string name="general_done_button" >Done
                 </string>
-                <string name="general_hours_string" >hours
+                <string name="home_groups" >Groups
                 </string>
                 <string name="home_game" >Start Game
                 </string>
                 <string name="general_coming_soon_string" >Coming Soon
                 </string>
-                <string name="right_answer_title" >Answer
-                </string>
                 <string name="difficulty_title" >Difficulty
+                </string>
+                <string name="right_answer_title" >Answer
                 </string>
                 <string name="empty_set_name" >Click to add a name
                 </string>
                 <string name="empty_question_list" >Please add new questions
+                </string>
+                <string name="team_removed" >Team removed
                 </string>
                 <string name="department_title" >Department
                 </string>
@@ -168,17 +176,19 @@
                 </string>
                 <string name="empty_group_list" >Please add new groups
                 </string>
+                <string name="team_not_found" >Team not found
+                </string>
                 <string name="last_name_title" >Last name
                 </string>
                 <string name="app_name" >TheQuiz
                 </string>
                 <string name="failed_create_group" >Failed to create group
                 </string>
-                <string name="home_info" >Info
+                <string name="empty_set_type" >Click to add a type
                 </string>
                 <string name="empty_group_name" >Click to add name
                 </string>
-                <string name="empty_set_type" >Click to add a type
+                <string name="home_info" >Info
                 </string>
                 <string name="general_failed_update" >Failed to Update
                 </string>
@@ -190,33 +200,6 @@
             <file
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/values/styles.xml"
                 qualifiers="" >
-
-                <style name="player_detail_title_text" >
-                    <item name="android:gravity">
-center_vertical|center_horizontal
-                    </item>
-                    <item name="android:shadowColor">
-@color/titlebar_text_shadow_color
-                    </item>
-                    <item name="android:shadowDx">
-1
-                    </item>
-                    <item name="android:shadowDy">
-1
-                    </item>
-                    <item name="android:shadowRadius">
-1.5
-                    </item>
-                    <item name="android:textColor">
-@color/white_background
-                    </item>
-                    <item name="android:textSize">
-20sp
-                    </item>
-                    <item name="android:textStyle">
-bold
-                    </item>
-                </style>
 
                 <style name="player_list_text" >
                     <item name="android:gravity">
@@ -239,6 +222,33 @@ center_vertical|center_horizontal
                     </item>
                     <item name="android:textSize">
 25sp
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                </style>
+
+                <style name="player_detail_title_text" >
+                    <item name="android:gravity">
+center_vertical|center_horizontal
+                    </item>
+                    <item name="android:shadowColor">
+@color/titlebar_text_shadow_color
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+1.5
+                    </item>
+                    <item name="android:textColor">
+@color/white_background
+                    </item>
+                    <item name="android:textSize">
+20sp
                     </item>
                     <item name="android:textStyle">
 bold
@@ -287,33 +297,6 @@ bold
                     </item>
                 </style>
 
-                <style name="group_name_text" >
-                    <item name="android:gravity">
-center_vertical|center_horizontal
-                    </item>
-                    <item name="android:shadowColor">
-@color/titlebar_text_shadow_color
-                    </item>
-                    <item name="android:shadowDx">
-1
-                    </item>
-                    <item name="android:shadowDy">
-1
-                    </item>
-                    <item name="android:shadowRadius">
-1.5
-                    </item>
-                    <item name="android:textColor">
-@color/white_background
-                    </item>
-                    <item name="android:textSize">
-25sp
-                    </item>
-                    <item name="android:textStyle">
-bold
-                    </item>
-                </style>
-
                 <style name="department_list_text" >
                     <item name="android:gravity">
 center_vertical|center_horizontal
@@ -338,6 +321,33 @@ center_vertical|center_horizontal
                     </item>
                     <item name="android:textStyle">
 italic
+                    </item>
+                </style>
+
+                <style name="group_name_text" >
+                    <item name="android:gravity">
+center_vertical|center_horizontal
+                    </item>
+                    <item name="android:shadowColor">
+@color/titlebar_text_shadow_color
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+1.5
+                    </item>
+                    <item name="android:textColor">
+@color/white_background
+                    </item>
+                    <item name="android:textSize">
+25sp
+                    </item>
+                    <item name="android:textStyle">
+bold
                     </item>
                 </style>
 
