@@ -98,25 +98,29 @@
             <file
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/values/colors.xml"
                 qualifiers="" >
-                <color name="custom_button_active_end" >#B9DB86
+                <color name="custom_button_active_end" >#11000000
                 </color>
-                <color name="titlebar_text_color" >#ffffff
-                </color>
-                <color name="custom_button_active_start" >#E0F0CB
-                </color>
-                <color name="custom_button_inactive_start" >#B9DB86
+                <color name="custom_button_active_start" >#22000000
                 </color>
                 <color name="black_background" >#000000
                 </color>
-                <color name="transparent" >#00000000
-                </color>
                 <color name="home_font_color" >#ffffff
+                </color>
+                <color name="blue_font_color" >#7DEDFA
+                </color>
+                <color name="white_background" >#ffffff
+                </color>
+                <color name="titlebar_text_color" >#ffffff
+                </color>
+                <color name="custom_button_inactive_start" >#88000000
+                </color>
+                <color name="timer_font_color" >#D1212D
+                </color>
+                <color name="transparent" >#00000000
                 </color>
                 <color name="black_overlay" >#66000000
                 </color>
-                <color name="custom_button_inactive_end" >#E0F0CB
-                </color>
-                <color name="white_background" >#ffffff
+                <color name="custom_button_inactive_end" >#66000000
                 </color>
                 <color name="titlebar_text_shadow_color" >#000033
                 </color>
@@ -128,35 +132,27 @@
                 </string>
                 <string name="default_player" >New Player
                 </string>
-                <string name="first_name_title" >First name
-                </string>
                 <string name="team_already_added" >Team already added
                 </string>
                 <string name="team_added" >New team added
                 </string>
-                <string name="default_question" >New Question
-                </string>
                 <string name="question_title" >Question
-                </string>
-                <string name="home_groups" >Groups
                 </string>
                 <string name="general_done_button" >Done
                 </string>
-                <string name="general_hours_string" >hours
+                <string name="home_groups" >Groups
+                </string>
+                <string name="game_over" >Game Over
                 </string>
                 <string name="home_game" >Start Game
                 </string>
                 <string name="general_coming_soon_string" >Coming Soon
                 </string>
-                <string name="difficulty_title" >Difficulty
-                </string>
                 <string name="right_answer_title" >Answer
                 </string>
-                <string name="empty_set_name" >Click to add a name
+                <string name="difficulty_title" >Difficulty
                 </string>
                 <string name="empty_question_list" >Please add new questions
-                </string>
-                <string name="team_removed" >Team removed
                 </string>
                 <string name="remove_group_button" >Remove
                 </string>
@@ -166,82 +162,113 @@
                 </string>
                 <string name="home_settings" >Settings
                 </string>
+                <string name="round_text" >Round ***
+                </string>
+                <string name="empty_player_list" >Please add new players
+                </string>
+                <string name="round_completed" >Round completed
+                </string>
+                <string name="default_set" >New Set
+                </string>
+                <string name="option_four_title" >Option D
+                </string>
+                <string name="right_answer_selected" >Congratulation, your team moves to next level
+                </string>
+                <string name="wrong_answer_selected" >I am sorry. It is a wrong answer
+                </string>
+                <string name="team_not_found" >Team not found
+                </string>
+                <string name="cancel_group_button" >Cancel
+                </string>
+                <string name="empty_group_name" >Click to add name
+                </string>
+                <string name="general_failed_update" >Failed to Update
+                </string>
+                <string name="empty_sets_list" >Please add new question sets
+                </string>
+                <string name="remove_group_message" >Do you want to remove *** from the game ?
+                </string>
+                <string name="first_name_title" >First name
+                </string>
+                <string name="default_question" >New Question
+                </string>
+                <string name="general_hours_string" >hours
+                </string>
+                <string name="start_button_text" >Start
+                </string>
+                <string name="no_groups" >Please create some groups first
+                </string>
+                <string name="choose_answer_first" >Please select and answer first
+                </string>
+                <string name="empty_set_name" >Click to add a name
+                </string>
+                <string name="team_removed" >Team removed
+                </string>
+                <string name="loading_questions" >Initializing game
+                </string>
+                <string name="problem_loading_question" >Problem loading question.
+                </string>
+                <string name="general_please_wait_string" >Please wait
+                </string>
                 <string name="default_group" >New Group
                 </string>
                 <string name="start_game_button" >Create Game
                 </string>
-                <string name="empty_player_list" >Please add new players
-                </string>
-                <string name="default_set" >New Set
-                </string>
                 <string name="option_two_title" >Option B
                 </string>
-                <string name="option_four_title" >Option D
+                <string name="special_round" >Knock Out Round
                 </string>
                 <string name="empty_group_list" >Please add new groups
                 </string>
-                <string name="team_not_found" >Team not found
-                </string>
                 <string name="last_name_title" >Last name
-                </string>
-                <string name="failed_create_group" >Failed to create group
                 </string>
                 <string name="app_name" >TheQuiz
                 </string>
-                <string name="cancel_group_button" >Cancel
+                <string name="failed_create_group" >Failed to create group
+                </string>
+                <string name="not_enough_questions_long" >Insufficient questions for round ***
                 </string>
                 <string name="home_info" >Info
                 </string>
-                <string name="empty_group_name" >Click to add name
-                </string>
                 <string name="empty_set_type" >Click to add a type
                 </string>
-                <string name="general_failed_update" >Failed to Update
+                <string name="not_enough_questions_short" >WARNING
                 </string>
                 <string name="option_one_title" >Option A
-                </string>
-                <string name="remove_group_message" >Do you want to remove *** from the game ?
-                </string>
-                <string name="empty_sets_list" >Please add new question sets
                 </string>
             </file>
             <file
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/values/styles.xml"
                 qualifiers="" >
 
-                <style
-                    name="custom_app_dialog"
-                    parent="@android:style/Theme.Holo.NoActionBar" >
-                    <item name="android:windowFrame">
-@null
+                <style name="timer_text" >
+                    <item name="android:gravity">
+center_vertical|center_horizontal
                     </item>
-                    <item name="android:windowBackground">
-@android:color/transparent
+                    <item name="android:shadowColor">
+@color/titlebar_text_shadow_color
                     </item>
-                    <item name="android:windowIsFloating">
-true
+                    <item name="android:shadowDx">
+1
                     </item>
-                    <item name="android:windowContentOverlay">
-@null
+                    <item name="android:shadowDy">
+1
                     </item>
-                    <item name="android:windowTitleStyle">
-@null
+                    <item name="android:shadowRadius">
+1.5
                     </item>
-                    <item name="android:windowAnimationStyle">
-@android:style/Animation.Dialog
+                    <item name="android:textColor">
+@color/timer_font_color
                     </item>
-                    <item name="android:windowSoftInputMode">
-stateUnspecified|adjustPan
+                    <item name="android:textSize">
+30sp
                     </item>
-                    <item name="android:backgroundDimEnabled">
-false
-                    </item>
-                    <item name="android:background">
-@android:color/transparent
+                    <item name="android:textStyle">
+bold
                     </item>
                 </style>
 
-                <style name="player_detail_title_text" >
+                <style name="team_name_text" >
                     <item name="android:gravity">
 center_vertical|center_horizontal
                     </item>
@@ -261,7 +288,7 @@ center_vertical|center_horizontal
 @color/white_background
                     </item>
                     <item name="android:textSize">
-20sp
+30sp
                     </item>
                     <item name="android:textStyle">
 bold
@@ -295,21 +322,6 @@ bold
                     </item>
                 </style>
 
-                <style name="question_list_text" >
-                    <item name="android:gravity">
-center_vertical|left
-                    </item>
-                    <item name="android:textColor">
-@color/white_background
-                    </item>
-                    <item name="android:textSize">
-12sp
-                    </item>
-                    <item name="android:textStyle">
-italic
-                    </item>
-                </style>
-
                 <style name="home_option_text" >
                     <item name="android:gravity">
 center_vertical|center_horizontal
@@ -334,6 +346,134 @@ center_vertical|center_horizontal
                     </item>
                     <item name="android:textStyle">
 bold
+                    </item>
+                </style>
+
+                <style name="question_text" >
+                    <item name="android:gravity">
+center_vertical|center_horizontal
+                    </item>
+                    <item name="android:shadowColor">
+@color/titlebar_text_shadow_color
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+1.5
+                    </item>
+                    <item name="android:textColor">
+@color/white_background
+                    </item>
+                    <item name="android:textSize">
+20sp
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                </style>
+
+                <style name="player_detail_title_text" >
+                    <item name="android:gravity">
+center_vertical|center_horizontal
+                    </item>
+                    <item name="android:shadowColor">
+@color/titlebar_text_shadow_color
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+1.5
+                    </item>
+                    <item name="android:textColor">
+@color/white_background
+                    </item>
+                    <item name="android:textSize">
+20sp
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                </style>
+
+                <style
+                    name="custom_app_dialog"
+                    parent="@android:style/Theme.Holo.NoActionBar" >
+                    <item name="android:windowFrame">
+@null
+                    </item>
+                    <item name="android:windowBackground">
+@android:color/transparent
+                    </item>
+                    <item name="android:windowIsFloating">
+true
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                    <item name="android:windowTitleStyle">
+@null
+                    </item>
+                    <item name="android:windowAnimationStyle">
+@android:style/Animation.Dialog
+                    </item>
+                    <item name="android:windowSoftInputMode">
+stateUnspecified|adjustPan
+                    </item>
+                    <item name="android:backgroundDimEnabled">
+false
+                    </item>
+                    <item name="android:background">
+@android:color/transparent
+                    </item>
+                </style>
+
+                <style name="question_list_text" >
+                    <item name="android:gravity">
+center_vertical|left
+                    </item>
+                    <item name="android:textColor">
+@color/white_background
+                    </item>
+                    <item name="android:textSize">
+12sp
+                    </item>
+                    <item name="android:textStyle">
+italic
+                    </item>
+                </style>
+
+                <style name="department_list_text" >
+                    <item name="android:gravity">
+center_vertical|center_horizontal
+                    </item>
+                    <item name="android:shadowColor">
+@color/titlebar_text_shadow_color
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+1.5
+                    </item>
+                    <item name="android:textColor">
+@color/white_background
+                    </item>
+                    <item name="android:textSize">
+20sp
+                    </item>
+                    <item name="android:textStyle">
+italic
                     </item>
                 </style>
 
@@ -364,7 +504,7 @@ bold
                     </item>
                 </style>
 
-                <style name="department_list_text" >
+                <style name="round_text" >
                     <item name="android:gravity">
 center_vertical|center_horizontal
                     </item>
@@ -381,13 +521,13 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/blue_font_color
                     </item>
                     <item name="android:textSize">
-20sp
+100sp
                     </item>
                     <item name="android:textStyle">
-italic
+bold
                     </item>
                 </style>
 
@@ -477,6 +617,21 @@ italic
                     parent="android:Theme.Holo.Light.NoActionBar" >
 
                     <!-- Customize your theme here. -->
+                </style>
+
+                <style name="round_status_text" >
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:textColor">
+@color/blue_font_color
+                    </item>
+                    <item name="android:textSize">
+16sp
+                    </item>
+                    <item name="android:textStyle">
+italic
+                    </item>
                 </style>
             </file>
             <file
@@ -596,6 +751,16 @@ true
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/rounded_white_border.xml"
                 qualifiers=""
                 type="drawable" />
+            <file
+                name="fragment_question_fragment"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/layout/fragment_question_fragment.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_round"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/layout/fragment_round.xml"
+                qualifiers=""
+                type="layout" />
         </source>
         <source path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/build/res/rs/debug" />
         <source path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/build/res/generated/debug" />

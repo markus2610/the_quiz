@@ -27,8 +27,7 @@
             android:layout_height="wrap_content"
             android:text="@string/empty_group_list"
             android:textIsSelectable="false"
-            android:textStyle="bold"
-            android:visibility="gone"/>
+            android:textStyle="bold"/>
 
     <ListView
             android:id="@+id/group_selected_list"
@@ -51,7 +50,8 @@
             android:layout_marginLeft="100dp"
             android:textSize="30sp"
             android:layout_alignParentBottom="true"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:visibility="gone"/>
 
 
 </RelativeLayout>

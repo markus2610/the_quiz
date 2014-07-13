@@ -5,6 +5,7 @@
 
     <!-- General Strings-->
     <string name="general_coming_soon_string">Coming Soon</string>
+    <string name="general_please_wait_string">Please wait</string>
     <string name="general_hours_string">hours</string>
     <string name="general_done_button">Done</string>
     <string name="general_failed_update">Failed to Update</string>
@@ -64,5 +65,23 @@
     <string name="remove_group_button">Remove</string>
     <string name="cancel_group_button">Cancel</string>
     <string name="remove_group_message">Do you want to remove *** from the game ?</string>
+
+    <string name="start_button_text">Start</string>
+    <string name="choose_answer_first">Please select and answer first</string>
+    <string name="round_completed">Round completed</string>
+
+    <string name="right_answer_selected">Congratulation, your team moves to next level</string>
+    <string name="wrong_answer_selected">I am sorry. It is a wrong answer</string>
+
+    <string name="round_text">Round ***</string>
+    <string name="game_over">Game Over</string>
+    <string name="loading_questions">Initializing game</string>
+    <string name="special_round">Knock Out Round</string>
+
+    <!-- Error Messages -->
+    <string name="no_groups">Please create some groups first</string>
+    <string name="problem_loading_question">Problem loading question.</string>
+    <string name="not_enough_questions_short">WARNING</string>
+    <string name="not_enough_questions_long">Insufficient questions for round ***</string>
 
 </resources>

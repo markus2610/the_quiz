@@ -17,5 +17,8 @@ public class AppConstants {
     public static final int FULL_POINT = 3;
     public static final int SUB_POINT = 1;
 
-    public static final int TIMER_DURATION = 60;
+    public static final int FULL_TIMER_DURATION = 60000;
+    public static final int HALF_TIMER_DURATION = 30000;
+
+    public static final int MAX_ROUNDS = 10;
 }

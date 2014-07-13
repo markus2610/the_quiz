@@ -21,6 +21,7 @@ public class GameActivity extends Activity {
         setContentView(R.layout.activity_game_layout);
 
         gameManager = new GameManager(this);
+        gameManager.createGame();
 
         NewGameSettingFragment newGameSettingFragment = NewGameSettingFragment.getInstance();
         getFragmentManager().beginTransaction().replace( R.id.fragment_frame, newGameSettingFragment ).commit();

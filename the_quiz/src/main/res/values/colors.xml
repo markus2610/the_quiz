@@ -9,11 +9,14 @@
     <color name="titlebar_text_shadow_color">#000033</color>
 
     <color name="home_font_color">#ffffff</color>
+    <color name="timer_font_color">#D1212D</color>
+    <color name="blue_font_color">#7DEDFA</color>
 
     <!-- rounded button colors -->
-    <color name="custom_button_inactive_start">#B9DB86</color>
-    <color name="custom_button_inactive_end">#E0F0CB</color>
-    <color name="custom_button_active_start">#E0F0CB</color>
-    <color name="custom_button_active_end">#B9DB86</color>
+    <color name="custom_button_inactive_start">#88000000</color>
+    <color name="custom_button_inactive_end">#66000000</color>
+
+    <color name="custom_button_active_start">#22000000</color>
+    <color name="custom_button_active_end">#11000000</color>
 
 </resources>

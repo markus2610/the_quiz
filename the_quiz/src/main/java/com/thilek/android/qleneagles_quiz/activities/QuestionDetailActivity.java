@@ -33,7 +33,10 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
     private ArrayAdapter<String> answerAdapter, difficultyAdapter;
 
     private String[] answerOption = {"A", "B", "C", "D"};
-    private String[] difficultyOption = {String.valueOf(Question.DIFFICULTY_LEVEL_1), String.valueOf(Question.DIFFICULTY_LEVEL_2), String.valueOf(Question.DIFFICULTY_LEVEL_3)};
+    private String[] difficultyOption = {String.valueOf(Question.DIFFICULTY_LEVEL_1), String.valueOf(Question.DIFFICULTY_LEVEL_2), String.valueOf(Question.DIFFICULTY_LEVEL_3), String.valueOf(Question.DIFFICULTY_LEVEL_4),
+            String.valueOf(Question.DIFFICULTY_LEVEL_5), String.valueOf(Question.DIFFICULTY_LEVEL_6), String.valueOf(Question.DIFFICULTY_LEVEL_7),
+            String.valueOf(Question.DIFFICULTY_LEVEL_8), String.valueOf(Question.DIFFICULTY_LEVEL_9), String.valueOf(Question.DIFFICULTY_LEVEL_10),
+            String.valueOf(Question.DIFFICULTY_LEVEL_11)};
 
     Animation slide_in_left, slide_out_right;
 

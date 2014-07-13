@@ -2,7 +2,6 @@ package com.thilek.android.qleneagles_quiz.fragments;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import com.thilek.android.qleneagles_quiz.adapters.GroupListAdapter;
 import com.thilek.android.qleneagles_quiz.database.models.Group;
 import com.thilek.android.qleneagles_quiz.tasks.GetGroupsTask;
 import com.thilek.android.qleneagles_quiz.tasks.TaskListener;
+import com.thilek.android.qleneagles_quiz.views.Toasts;
 
 import java.util.ArrayList;
 
@@ -48,7 +48,6 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-
         vFragmentView = inflater.inflate(R.layout.fragment_game_set_up, container, false);
 
         emptyText = (TextView) vFragmentView.findViewById(R.id.empty_list_text);
@@ -81,14 +80,15 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
         removeGroupMessage = (TextView) removeGroupDialog.findViewById(R.id.remove_group_message);
 
 
-        getGroupsTask =  new GetGroupsTask(this,GET_ALL_GROUPS);
+        getGroupsTask = new GetGroupsTask(this, GET_ALL_GROUPS);
         getGroupsTask.execute();
 
         return vFragmentView;
     }
 
-    private void createGame(){
-
+    private void createGame() {
+        RoundFragment roundFragment = RoundFragment.getInstance();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_frame, roundFragment).commit();
     }
 
 
@@ -100,10 +100,10 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
         groupListDialog.dismiss();
     }
 
-    private void handleCreateButton(){
-        if(selectedGroupList.getCount() < 1) {
+    private void handleCreateButton() {
+        if (selectedGroupList.getCount() < 1) {
             createGameButton.setVisibility(View.GONE);
-        } else{
+        } else {
             createGameButton.setVisibility(View.VISIBLE);
         }
     }
@@ -157,7 +157,10 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v.getId() == addTeamButton.getId()) {
-            groupListDialog.show();
+            if (groupListAdapter.getCount() < 1)
+                Toasts.customShortToast(getActivity(), R.string.no_groups);
+            else
+                groupListDialog.show();
         } else if (v.getId() == createGameButton.getId()) {
             createGame();
         } else if (v.getId() == removeGroupButton.getId()) {
@@ -179,6 +182,7 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
             handleCreateButton();
 
             groupListDialog.dismiss();
+            removeGroupDialog.dismiss();
         }
     }
 
@@ -192,6 +196,7 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
         removeGroupMessage.setText(message);
         removeGroupMessage.setTag(group);
 
+        groupListDialog.dismiss();
         removeGroupDialog.show();
 
         return false;
