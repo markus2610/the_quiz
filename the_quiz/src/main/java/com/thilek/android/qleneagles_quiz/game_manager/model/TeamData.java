@@ -15,6 +15,7 @@ public class TeamData {
     public static final String SET_ID = "set_id";
     public static final String HELP_OPTION = "help_option";
     public static final String FILTER_OPTION = "filter_option";
+    public static final String KNOCKED_OUT_ROUND = "knocked_out_round";
 
     public long group_id;
     public Group group;
@@ -23,6 +24,9 @@ public class TeamData {
     public boolean helpOption;
     public boolean filterOption;
     public long set_id;
+    public int knockedOutRound;
+
+    public boolean isActive;
 
 
     public TeamData(long id) {
@@ -30,8 +34,10 @@ public class TeamData {
         this.group_id = id;
         this.helpOption = false;
         this.filterOption = false;
+        this.isActive = true;
         this.score = 0;
         this.set_id = 0;
+        this.knockedOutRound = 0;
     }
 
     public TeamData(Group group) {
@@ -39,8 +45,10 @@ public class TeamData {
         this.group_id = group._id;
         this.helpOption = false;
         this.filterOption = false;
+        this.isActive = true;
         this.score = 0;
         this.set_id = 0;
+        this.knockedOutRound = 0;
     }
 
 
@@ -54,6 +62,7 @@ public class TeamData {
         jsonObject.put(HELP_OPTION,helpOption);
         jsonObject.put(FILTER_OPTION,filterOption);
         jsonObject.put(SET_ID,set_id);
+        jsonObject.put(KNOCKED_OUT_ROUND,knockedOutRound);
 
         return jsonObject;
     }

@@ -98,7 +98,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         answerSpinner.setAdapter(answerAdapter);
 
         difficultySpinner = (Spinner) findViewById(R.id.difficulty_spinner);
-        difficultyAdapter = new ArrayAdapter<String>(this,  R.layout.custom_single_list_item, difficultyOption);
+        difficultyAdapter = new ArrayAdapter<String>(this, R.layout.custom_single_list_item, difficultyOption);
         difficultySpinner.setAdapter(difficultyAdapter);
 
         Bundle bundle = getIntent().getExtras();
@@ -118,7 +118,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
     }
 
 
-    private void movePlayerDetail() {
+    private void moveQuestionDetail() {
         questionText.setText(questionEditText.getText().toString());
         optionOneText.setText(optionOneEditText.getText().toString());
         optionTwoText.setText(optionTwoEditText.getText().toString());
@@ -128,13 +128,13 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         difficultyText.setText(String.valueOf(difficultySpinner.getSelectedItem()));
     }
 
-    private void loadPlayerDetails() {
+    private void loadQuestionDetails() {
         questionText.setText(question.question);
         optionOneText.setText(question.option_one);
         optionTwoText.setText(question.option_two);
         optionThreeText.setText(question.option_three);
         optionFourText.setText(question.option_four);
-        answerText.setText(question.answer);
+        answerText.setText(question.right_answer);
         difficultyText.setText(String.valueOf(question.difficulty));
 
         questionEditText.setText(question.question);
@@ -143,12 +143,12 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         optionThreeEditText.setText(question.option_three);
         optionFourEditText.setText(question.option_four);
 
-        answerSpinner.setSelection(answerAdapter.getPosition(question.answer),false);
-        difficultySpinner.setSelection(difficultyAdapter.getPosition(String.valueOf(question.difficulty)),false);
+        answerSpinner.setSelection(answerAdapter.getPosition(question.right_answer), false);
+        difficultySpinner.setSelection(difficultyAdapter.getPosition(String.valueOf(question.difficulty)), false);
 
     }
 
-    private void getPlayerDetails() {
+    private void getQuestionDetails() {
         if (question == null) {
             question = new Question();
             question.set_id = setID;
@@ -160,12 +160,12 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         question.option_two = optionTwoEditText.getText().toString();
         question.option_three = optionThreeEditText.getText().toString();
         question.option_four = optionFourEditText.getText().toString();
-        question.answer = String.valueOf(answerSpinner.getSelectedItem());
+        question.right_answer = String.valueOf(answerSpinner.getSelectedItem());
         question.difficulty = Integer.valueOf(String.valueOf(difficultySpinner.getSelectedItem()));
     }
 
     public void onQuestionDoneClicked(View view) {
-        getPlayerDetails();
+        getQuestionDetails();
         new UpdateQuestionTask(this, SAVE_QUESTION).execute(question);
     }
 
@@ -191,7 +191,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
     private void switchViewSwitcher(boolean showNext) {
 
         if (!showNext) {
-            movePlayerDetail();
+            moveQuestionDetail();
             editIcon.setActivated(false);
 
             optionOneSwitch.showPrevious();
@@ -232,7 +232,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         switch (taskID) {
             case GET_QUESTION: {
                 question = (Question) object;
-                loadPlayerDetails();
+                loadQuestionDetails();
             }
             break;
 

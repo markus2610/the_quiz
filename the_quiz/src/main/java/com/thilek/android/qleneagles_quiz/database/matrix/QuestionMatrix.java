@@ -33,7 +33,8 @@ public class QuestionMatrix {
         contentValues.put(Question.OPTION_TWO,question.option_two);
         contentValues.put(Question.OPTION_THREE,question.option_three);
         contentValues.put(Question.OPTION_FOUR,question.option_four);
-        contentValues.put(Question.ANSWER,question.answer);
+        contentValues.put(Question.ANSWER,question.right_answer);
+        contentValues.put(Question.ANSWER_OPTION,question.answer_option);
         contentValues.put(Question.DIFFICULTY,question.difficulty);
         contentValues.put(Question.SET_ID,question.set_id);
 

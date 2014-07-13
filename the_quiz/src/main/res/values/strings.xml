@@ -60,4 +60,9 @@
     <string name="team_removed">Team removed</string>
     <string name="team_not_found">Team not found</string>
 
+    <string name="start_game_button">Create Game</string>
+    <string name="remove_group_button">Remove</string>
+    <string name="cancel_group_button">Cancel</string>
+    <string name="remove_group_message">Do you want to remove *** from the game ?</string>
+
 </resources>

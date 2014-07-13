@@ -30,6 +30,7 @@ public class GroupListActivity extends ListActivity implements TaskListener {
         setContentView(R.layout.activity_group_layout);
 
         emptyText = (TextView) findViewById(R.id.empty_list_text);
+        getListView().setEmptyView(emptyText);
 
     }
 
@@ -70,15 +71,10 @@ public class GroupListActivity extends ListActivity implements TaskListener {
             case GET_GROUPS: {
                 ArrayList<Group> groups = (ArrayList<Group>) object;
 
-                if (groups.size() == 0) {
-                    emptyText.setVisibility(View.VISIBLE);
-                } else {
-                    emptyText.setVisibility(View.GONE);
+                if (groups.size() != 0) {
                     groupListAdapter = new GroupListAdapter(GroupListActivity.this, groups);
                     setListAdapter(groupListAdapter);
                 }
-
-
             }
             break;
         }

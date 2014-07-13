@@ -26,6 +26,7 @@
     <eat-comment />
 
     <string name="app_name">TheQuiz</string>
+    <string name="cancel_group_button">Cancel</string>
     <string name="default_group">New Group</string>
     <string name="default_player">New Player</string>
     <string name="default_question">New Question</string>
@@ -56,7 +57,10 @@
     <string name="option_three_title">Option C</string>
     <string name="option_two_title">Option B</string>
     <string name="question_title">Question</string>
+    <string name="remove_group_button">Remove</string>
+    <string name="remove_group_message">Do you want to remove *** from the game ?</string>
     <string name="right_answer_title">Answer</string>
+    <string name="start_game_button">Create Game</string>
     <string name="team_added">New team added</string>
     <string name="team_already_added">Team already added</string>
     <string name="team_not_found">Team not found</string>
@@ -66,6 +70,18 @@
 
     <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="custom_app_dialog" parent="@android:style/Theme.Holo.NoActionBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="department_list_text">
@@ -85,7 +101,7 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1.5</item>
-        <item name="android:textColor">@color/black_background</item>
+        <item name="android:textColor">@color/white_background</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>

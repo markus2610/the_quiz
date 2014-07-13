@@ -22,7 +22,7 @@ public class HomeScreenActivity extends Activity {
 
 
     public void onGameClicked(View view) {
-        Toasts.customShortToast(this, R.string.general_coming_soon_string);
+        startActivity(new Intent(this, GameActivity.class));
     }
 
     public void onGroupsClicked(View view) {

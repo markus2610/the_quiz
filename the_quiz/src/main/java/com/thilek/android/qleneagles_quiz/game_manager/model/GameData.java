@@ -2,11 +2,13 @@ package com.thilek.android.qleneagles_quiz.game_manager.model;
 
 import com.thilek.android.qleneagles_quiz.R;
 import com.thilek.android.qleneagles_quiz.database.models.Group;
+import com.thilek.android.qleneagles_quiz.database.models.Question;
 import com.thilek.android.qleneagles_quiz.views.Toasts;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class GameData {
     public Date gameDate;
 
     public Map<Long, TeamData> teams = new HashMap<Long, TeamData>();
-
+    public Map<Integer, ArrayList<Question>> questions = new HashMap<Integer, ArrayList<Question>>();
 
     public GameData() {
         gameDate = new Date();

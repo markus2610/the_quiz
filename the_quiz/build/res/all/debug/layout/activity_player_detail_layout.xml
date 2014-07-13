@@ -15,7 +15,7 @@
             android:layout_marginRight="10dp"
             android:src="@drawable/edit_button"
             android:clickable="true"
-            android:onClick="onQuestionPlayerClicked"/>
+            android:onClick="onEditPlayerClicked"/>
 
     <ScrollView
             android:layout_width="fill_parent"
@@ -172,7 +172,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_alignParentBottom="true"
-            android:onClick="onQuestionDoneClicked"
+            android:onClick="onPlayerDoneClicked"
             android:clickable="true"/>
 
 

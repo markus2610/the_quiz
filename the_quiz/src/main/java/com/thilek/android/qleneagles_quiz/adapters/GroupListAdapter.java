@@ -18,10 +18,10 @@ import java.util.List;
  */
 public class GroupListAdapter extends BaseAdapter {
 
-    private List<Group> groups = new ArrayList<Group>();
+    private ArrayList<Group> groups = new ArrayList<Group>();
     private LayoutInflater layoutInflater;
 
-    public GroupListAdapter(Context context, List<Group> groupList) {
+    public GroupListAdapter(Context context, ArrayList<Group> groupList) {
 
         this.groups = groupList;
         this.layoutInflater = LayoutInflater.from(context);
