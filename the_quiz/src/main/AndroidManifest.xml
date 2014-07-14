@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.thilek.android.qleneagles_quiz">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
             android:name=".AppContext"
             android:allowBackup="true"
@@ -66,6 +69,12 @@
                 android:launchMode="singleTask"
                 android:windowSoftInputMode="adjustPan"
                 android:screenOrientation="landscape">
+        </activity>
+        <activity
+                android:name=".activities.ExportQuestionActivity"
+                android:launchMode="singleTask"
+                android:windowSoftInputMode="adjustPan"
+                android:screenOrientation="portrait">
         </activity>
 
     </application>

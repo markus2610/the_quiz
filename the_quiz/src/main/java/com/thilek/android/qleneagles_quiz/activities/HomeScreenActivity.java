@@ -30,7 +30,7 @@ public class HomeScreenActivity extends Activity {
     }
 
     public void onSettingsClicked(View view) {
-        startActivity(new Intent(this, SetListActivity.class));
+        startActivity(new Intent(this, ExportQuestionActivity.class));
     }
 
     public void onInfoClicked(View view) {

@@ -85,8 +85,7 @@ public class FileService {
 		
 		String packageName = AppContext.getContext().getPackageName();
 		File externalPath = Environment.getExternalStorageDirectory();
-		File appFiles = new File(externalPath.getAbsolutePath() +
-                "/Android/data/" + packageName + "/files");
+		File appFiles = new File(externalPath.getAbsolutePath() + "/Android/data/" + packageName + "/files");
 		
 		if (location.equals(INTERNAL))
 			return "file://" + AppContext.getContext().getFilesDir().getAbsolutePath() + dataPath;
@@ -97,7 +96,7 @@ public class FileService {
 		if (location.equals(CACHE))
 			return "file://" + AppContext.getContext().getCacheDir().getAbsolutePath() + dataPath;
 		if (location.equals(PUBLIC))
-			return "file://" + Environment.getExternalStorageDirectory().getAbsolutePath() + dataPath;
+			return "file://" + externalPath.getAbsolutePath() + dataPath;
 		throw new FileException(FileException.WRONG_LOCATION_EXCEPTION, "location: " + location);
 	}
 	

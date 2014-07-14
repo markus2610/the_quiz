@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/app_background">
+
+    <ImageView
+            android:id="@+id/edit_set_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/edit_button"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:clickable="true"
+            android:onClick="onExportClicked"
+            android:background="@drawable/image_background"/>
+
+    <ImageView
+            android:id="@+id/adding_question_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/add_button"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:onClick="onAddQuestionClicked"
+            android:background="@drawable/image_background"/>
+
+
+    <TextView
+            android:layout_below="@id/adding_question_button"
+            style="@style/empty_list_text"
+            android:id="@+id/empty_list_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_question_list"
+            android:textIsSelectable="false"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+    <ListView
+            android:id="@android:id/list"
+            android:layout_margin="20dp"
+            android:background="@null"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@color/transparent"
+            android:dividerHeight="10dp"
+            android:layout_below="@+id/empty_list_text"/>
+
+
+</RelativeLayout>
