@@ -3,12 +3,13 @@ package com.thilek.android.qleneagles_quiz.tasks;
 import android.os.AsyncTask;
 import com.thilek.android.qleneagles_quiz.database.reader.QuestionReader;
 
+import java.io.File;
 import java.io.FileInputStream;
 
 /**
  * Created by tsilvadorai on 14.06.14.
  */
-public class ExportQuestionsTask extends AsyncTask<String, Void, Boolean> {
+public class ExportQuestionsTask extends AsyncTask<File, Void, Boolean> {
 
     private static final String TAG = ExportQuestionsTask.class.getSimpleName();
 
@@ -29,9 +30,9 @@ public class ExportQuestionsTask extends AsyncTask<String, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(String... arguments) {
+    protected Boolean doInBackground(File... arguments) {
 
-        String filePath = arguments[0];
+        File filePath = arguments[0];
 
         return getData(filePath);
     }
@@ -42,7 +43,7 @@ public class ExportQuestionsTask extends AsyncTask<String, Void, Boolean> {
     }
 
 
-    private boolean getData(String strPath) {
+    private boolean getData(File strPath) {
 
         try {
             QuestionReader questionReader = new QuestionReader();

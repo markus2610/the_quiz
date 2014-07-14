@@ -53,6 +53,9 @@
     <string name="right_answer_title">Answer</string>
     <string name="difficulty_title">Difficulty</string>
 
+    <!-- Question Export Screen -->
+    <string name="export_successful">Successfully exported all questions.</string>
+
 
     <!-- Game Screen -->
     <string name="game_not_initialized">Game not initialized</string>
@@ -83,5 +86,6 @@
     <string name="problem_loading_question">Problem loading question.</string>
     <string name="not_enough_questions_short">WARNING</string>
     <string name="not_enough_questions_long">Insufficient questions for round ***</string>
+    <string name="fail_export">Failed to export the file. Please check your file content.</string>
 
 </resources>

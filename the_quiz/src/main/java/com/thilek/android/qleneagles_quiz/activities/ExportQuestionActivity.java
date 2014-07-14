@@ -12,9 +12,11 @@ import com.thilek.android.qleneagles_quiz.AppConstants;
 import com.thilek.android.qleneagles_quiz.R;
 import com.thilek.android.qleneagles_quiz.adapters.QuestionListAdapter;
 import com.thilek.android.qleneagles_quiz.database.models.Question;
+import com.thilek.android.qleneagles_quiz.tasks.ExportQuestionsTask;
 import com.thilek.android.qleneagles_quiz.tasks.GetAllQuestionsTask;
 import com.thilek.android.qleneagles_quiz.tasks.TaskListener;
 import com.thilek.android.qleneagles_quiz.views.FileSelectorDialog;
+import com.thilek.android.qleneagles_quiz.views.Toasts;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,8 +31,8 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
 
     private TextView emptyText;
     private QuestionListAdapter questionListAdapter;
-
     private FileSelectorDialog fileDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,9 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
         fileDialog.addFileListener(new FileSelectorDialog.FileSelectedListener() {
             public void fileSelected(File file) {
                 Log.d(getClass().getName(), "selected file " + file.toString());
+
+                new ExportQuestionsTask(ExportQuestionActivity.this, EXPORT_QUESTIONS).execute(file);
+
             }
         });
         //fileDialog.addDirectoryListener(new FileDialog.DirectorySelectedListener() {
@@ -112,7 +117,14 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
             break;
 
             case EXPORT_QUESTIONS: {
+                boolean exported = (Boolean) object;
 
+                if (exported) {
+                    Toasts.customShortToast(this, R.string.export_successful);
+                    new GetAllQuestionsTask(this, GET_QUESTIONS).execute();
+                } else {
+                    Toasts.customShortToast(this, R.string.fail_export);
+                }
 
             }
             break;
