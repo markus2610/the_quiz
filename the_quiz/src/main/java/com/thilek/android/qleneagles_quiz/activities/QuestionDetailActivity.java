@@ -22,15 +22,15 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
     private static final int ADD_QUESTION = 2;
     private static final int SAVE_QUESTION = 3;
 
-    private TextView questionText, optionOneText, optionTwoText, optionThreeText, optionFourText, answerText, difficultyText;
+    private TextView questionText, optionOneText, optionTwoText, optionThreeText, optionFourText, answerText,secondOptionText, difficultyText;
     private EditText questionEditText, optionOneEditText, optionTwoEditText, optionThreeEditText, optionFourEditText;
-    private ViewSwitcher questionSwitch, optionOneSwitch, optionTwoSwitch, optionThreeSwitch, optionFourSwitch, answerSwitch, difficultySwitch;
-    private Spinner answerSpinner, difficultySpinner;
+    private ViewSwitcher questionSwitch, optionOneSwitch, optionTwoSwitch, optionThreeSwitch, optionFourSwitch, answerSwitch,secondOptionSwitch, difficultySwitch;
+    private Spinner answerSpinner,secondOptionSpinner, difficultySpinner;
     private Question question;
     private ImageView editIcon;
-    private long setID;
 
-    private ArrayAdapter<String> answerAdapter, difficultyAdapter;
+
+    private ArrayAdapter<String> answerAdapter,secondOptionAdapter, difficultyAdapter;
 
     private String[] answerOption = {"A", "B", "C", "D"};
     private String[] difficultyOption = {String.valueOf(Question.DIFFICULTY_LEVEL_1), String.valueOf(Question.DIFFICULTY_LEVEL_2), String.valueOf(Question.DIFFICULTY_LEVEL_3), String.valueOf(Question.DIFFICULTY_LEVEL_4),
@@ -57,6 +57,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         optionThreeText = (TextView) findViewById(R.id.option_three_text);
         optionFourText = (TextView) findViewById(R.id.option_four_text);
         answerText = (TextView) findViewById(R.id.right_answer_text);
+        secondOptionText = (TextView) findViewById(R.id.second_answer_text);
         difficultyText = (TextView) findViewById(R.id.difficulty_text);
 
         editIcon = (ImageView) findViewById(R.id.editButton);
@@ -92,6 +93,10 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         answerSwitch.setInAnimation(slide_in_left);
         answerSwitch.setOutAnimation(slide_out_right);
 
+        secondOptionSwitch = (ViewSwitcher) findViewById(R.id.second__answer_switcher);
+        secondOptionSwitch.setInAnimation(slide_in_left);
+        secondOptionSwitch.setOutAnimation(slide_out_right);
+
         difficultySwitch = (ViewSwitcher) findViewById(R.id.difficulty_switcher);
         difficultySwitch.setInAnimation(slide_in_left);
         difficultySwitch.setOutAnimation(slide_out_right);
@@ -100,22 +105,20 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         answerAdapter = new ArrayAdapter<String>(this, R.layout.custom_single_list_item, answerOption);
         answerSpinner.setAdapter(answerAdapter);
 
+
+        secondOptionSpinner = (Spinner) findViewById(R.id.second_answer_spinner);
+        secondOptionAdapter = new ArrayAdapter<String>(this, R.layout.custom_single_list_item, answerOption);
+        secondOptionSpinner.setAdapter(secondOptionAdapter);
+
         difficultySpinner = (Spinner) findViewById(R.id.difficulty_spinner);
         difficultyAdapter = new ArrayAdapter<String>(this, R.layout.custom_single_list_item, difficultyOption);
         difficultySpinner.setAdapter(difficultyAdapter);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.containsKey(AppConstants.SET_ID)) {
-
-            setID = bundle.getLong(AppConstants.SET_ID);
-
-            if (bundle.containsKey(AppConstants.QUESTION_ID)) {
-                getQuestionDetailFromDatabase(bundle.getLong(AppConstants.QUESTION_ID));
-            } else {
-                addNewQuestion();
-            }
+        if (bundle != null && bundle.containsKey(AppConstants.QUESTION_ID)) {
+            getQuestionDetailFromDatabase(bundle.getLong(AppConstants.QUESTION_ID));
         } else {
-            finish();
+            addNewQuestion();
         }
 
     }
@@ -128,6 +131,8 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         optionThreeText.setText(optionThreeEditText.getText().toString());
         optionFourText.setText(optionFourEditText.getText().toString());
         answerText.setText(String.valueOf(answerSpinner.getSelectedItem()));
+        answerText.setText(String.valueOf(answerSpinner.getSelectedItem()));
+        secondOptionText.setText(String.valueOf(secondOptionSpinner.getSelectedItem()));
         difficultyText.setText(String.valueOf(difficultySpinner.getSelectedItem()));
     }
 
@@ -138,6 +143,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         optionThreeText.setText(question.option_three);
         optionFourText.setText(question.option_four);
         answerText.setText(question.right_answer);
+        secondOptionText.setText(question.answer_option);
         difficultyText.setText(String.valueOf(question.difficulty));
 
         questionEditText.setText(question.question);
@@ -147,6 +153,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         optionFourEditText.setText(question.option_four);
 
         answerSpinner.setSelection(answerAdapter.getPosition(question.right_answer), false);
+        secondOptionSpinner.setSelection(secondOptionAdapter.getPosition(question.answer_option), false);
         difficultySpinner.setSelection(difficultyAdapter.getPosition(String.valueOf(question.difficulty)), false);
 
     }
@@ -154,7 +161,6 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
     private void getQuestionDetails() {
         if (question == null) {
             question = new Question();
-            question.set_id = setID;
             question.question = getString(R.string.default_question);
         }
 
@@ -164,6 +170,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         question.option_three = optionThreeEditText.getText().toString();
         question.option_four = optionFourEditText.getText().toString();
         question.right_answer = String.valueOf(answerSpinner.getSelectedItem());
+        question.answer_option = String.valueOf(secondOptionSpinner.getSelectedItem());
         question.difficulty = Integer.valueOf(String.valueOf(difficultySpinner.getSelectedItem()));
     }
 
@@ -179,7 +186,6 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
 
     private void addNewQuestion() {
         question = new Question();
-        question.set_id = setID;
         question.question = getString(R.string.default_question);
 
         new AddQuestionTask(this, ADD_QUESTION).execute(question);
@@ -187,8 +193,8 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         switchViewSwitcher(true);
     }
 
-    private void getQuestionDetailFromDatabase(long group_id) {
-        new GetQuestionTask(this, GET_QUESTION).execute(group_id);
+    private void getQuestionDetailFromDatabase(long question_id) {
+        new GetQuestionTask(this, GET_QUESTION).execute(question_id);
     }
 
     private void switchViewSwitcher(boolean showNext) {
@@ -203,6 +209,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
             optionThreeSwitch.showPrevious();
             optionFourSwitch.showPrevious();
             answerSwitch.showPrevious();
+            secondOptionSwitch.showPrevious();
             difficultySwitch.showPrevious();
         } else {
             editIcon.setActivated(true);
@@ -213,6 +220,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
             optionThreeSwitch.showNext();
             optionFourSwitch.showNext();
             answerSwitch.showNext();
+            secondOptionSwitch.showNext();
             difficultySwitch.showNext();
         }
 

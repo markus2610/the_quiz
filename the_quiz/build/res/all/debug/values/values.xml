@@ -11,6 +11,7 @@
     <color name="custom_button_active_start">#22000000</color>
     <color name="custom_button_inactive_end">#66000000</color>
     <color name="custom_button_inactive_start">#88000000</color>
+    <color name="dark_black_overlay">#99000000</color>
     <color name="home_font_color">#ffffff</color>
     <color name="timer_font_color">#D1212D</color>
     <color name="titlebar_text_color">#ffffff</color>
@@ -34,6 +35,8 @@
     <string name="default_player">New Player</string>
     <string name="default_question">New Question</string>
     <string name="default_set">New Set</string>
+    <string name="delete_question_fail">Failed to delete question</string>
+    <string name="delete_question_successful">Successfully deleted question</string>
     <string name="department_title">Department</string>
     <string name="difficulty_title">Difficulty</string>
     <string name="empty_group_list">Please add new groups</string>
@@ -43,6 +46,8 @@
     <string name="empty_set_name">Click to add a name</string>
     <string name="empty_set_type">Click to add a type</string>
     <string name="empty_sets_list">Please add new question sets</string>
+    <string name="export_successful">Successfully exported all questions.</string>
+    <string name="fail_export">Failed to export the file. Please check your file content.</string>
     <string name="failed_create_group">Failed to create group</string>
     <string name="first_name_title">First name</string>
     <string name="game_not_initialized">Game not initialized</string>
@@ -69,10 +74,12 @@
     <string name="question_title">Question</string>
     <string name="remove_group_button">Remove</string>
     <string name="remove_group_message">Do you want to remove *** from the game ?</string>
+    <string name="remove_question_message">Do you want to remove this question from the list ?</string>
     <string name="right_answer_selected">Congratulation, your team moves to next level</string>
     <string name="right_answer_title">Answer</string>
     <string name="round_completed">Round completed</string>
     <string name="round_text">Round ***</string>
+    <string name="second_answer_title">Second Option</string>
     <string name="special_round">Knock Out Round</string>
     <string name="start_button_text">Start</string>
     <string name="start_game_button">Create Game</string>
@@ -84,8 +91,18 @@
     <!-- From: file:/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/values/styles.xml -->
     <eat-comment />
 
+    <style name="AppAppearanceSpinnerItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/white_background</item>
+    </style>
+
+    <style name="AppSpinnerItem" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:textAppearance">@style/AppAppearanceSpinnerItem</item>
+    </style>
+
     <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+
         <!-- Customize your theme here. -->
+        <item name="android:spinnerItemStyle">@style/AppSpinnerItem</item>
     </style>
 
     <style name="custom_app_dialog" parent="@android:style/Theme.Holo.NoActionBar">
@@ -188,11 +205,23 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="question_edit_text_text">
+        <item name="android:textColor">@color/white_background</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="question_list_text">
         <item name="android:gravity">center_vertical|left</item>
         <item name="android:textColor">@color/white_background</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="question_spinner_text">
+        <item name="android:textColor">@color/white_background</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="question_text">

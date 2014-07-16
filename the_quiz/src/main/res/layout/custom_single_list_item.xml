@@ -6,4 +6,5 @@
           android:layout_width="match_parent"
           android:layout_height="40dp"
           android:ellipsize="marquee"
-          android:gravity="center_vertical|left"/>
+          android:gravity="center_vertical|left"
+          android:background="@color/black_overlay"/>

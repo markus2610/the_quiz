@@ -4,6 +4,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:spinnerItemStyle">@style/AppSpinnerItem</item>
+    </style>
+
+
+    <style name="AppSpinnerItem" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:textAppearance">@style/AppAppearanceSpinnerItem</item>
+    </style>
+
+    <style name="AppAppearanceSpinnerItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/white_background</item>
     </style>
 
     <style name="home_option_text">
@@ -154,6 +164,18 @@
         <item name="android:textColor">@color/blue_font_color</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="question_edit_text_text">
+        <item name="android:textColor">@color/white_background</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="question_spinner_text">
+        <item name="android:textColor">@color/white_background</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 

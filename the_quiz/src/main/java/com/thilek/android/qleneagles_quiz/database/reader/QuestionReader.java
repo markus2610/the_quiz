@@ -14,9 +14,9 @@ import java.io.InputStreamReader;
 public class QuestionReader {
 
 
-    private static final String SEPARATOR = ",";
+    private static final String SEPARATOR = ";";
     private static final String SEARCH_KEY = "question";
-    private static final int LANGUAGE_COLUMN_SIZE = 8;
+    private static final int QUESTION_COLUMN_SIZE = 10;
 
 
     public QuestionReader() {
@@ -32,9 +32,9 @@ public class QuestionReader {
         try {
             while ((line = clsBufferedReader.readLine()) != null) {
                 if (isQuestion(line)) {
-                    Question clsLanguage = toQuestion(line);
-                    if (clsLanguage != null)
-                        matrix.addQuestion(clsLanguage);
+                    Question question = toQuestion(line);
+                    if (question != null)
+                        matrix.addQuestion(question);
                 }
             }
             clsBufferedReader.close();
@@ -54,7 +54,9 @@ public class QuestionReader {
     private Question toQuestion(String strLine) {
 
         String[] parts = strLine.split(SEPARATOR);
-        if (parts.length < LANGUAGE_COLUMN_SIZE) return null;
+
+        if (QUESTION_COLUMN_SIZE < parts.length) return null;
+
 
         Question clsQuestion = new Question();
         clsQuestion.question = parts[0];
