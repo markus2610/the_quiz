@@ -29,4 +29,5 @@ local.properties
 build/
 the_quiz/build/
 TheQuiz.iml
+.gradle/
 
