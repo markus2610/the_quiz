@@ -81,7 +81,9 @@
 
     <string name="round_text">Round ***</string>
     <string name="game_over">Game Over</string>
+    <string name="game_over_status">Create new game to play again</string>
     <string name="loading_questions">Initializing game</string>
+    <string name="click_to_start">Click to Start</string>
     <string name="special_round">Knock Out Round</string>
 
     <!-- Error Messages -->

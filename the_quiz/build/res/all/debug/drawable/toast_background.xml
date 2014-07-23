@@ -6,6 +6,6 @@
 
     <stroke
         android:width="3dip"
-        android:color="@color/white_background" />
+        android:color="@color/white" />
 
 </shape><!-- From: file:/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/toast_background.xml -->

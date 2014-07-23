@@ -26,7 +26,7 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
 
     private View vFragmentView;
 
-    private ImageView halfOption, audienceOption;
+    private ImageView filterOption, audienceOption;
     private TextView teamName, questionText;
 
     private Button optionOne, optionTwo, optionThree, optionFour, timerButton;
@@ -69,8 +69,8 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
 
         vFragmentView = inflater.inflate(R.layout.fragment_question_fragment, container, false);
 
-        halfOption = (ImageView) vFragmentView.findViewById(R.id.half_button);
-        halfOption.setOnClickListener(this);
+        filterOption = (ImageView) vFragmentView.findViewById(R.id.half_button);
+        filterOption.setOnClickListener(this);
         audienceOption = (ImageView) vFragmentView.findViewById(R.id.audience_button);
         audienceOption.setOnClickListener(this);
 
@@ -121,9 +121,9 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
         }
 
         if (teamData.filterOption) {
-            halfOption.setVisibility(View.VISIBLE);
+            filterOption.setVisibility(View.VISIBLE);
         } else {
-            halfOption.setVisibility(View.GONE);
+            filterOption.setVisibility(View.GONE);
         }
 
         teamName.setText(teamData.group.group_name);
@@ -181,42 +181,72 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
 
 
     private void checkAnswer(String option) {
+        handleTimer(0, false);
         isAnswered = true;
 
         if (option.equals(questions.get(currentQuestion).right_answer)) {
-
+            nextTeam();
         } else {
-
+            getFragmentActivity().gameManager.knockedOut(teamData.get(currentTeam).group_id, currentRound);
         }
-
     }
 
 
+    private void askAudience() {
+        handleTimer(0, false);
+        audienceOption.setVisibility(View.GONE);
+        teamData.get(currentTeam).helpOption = false;
+        getFragmentActivity().gameManager.useAudienceOption(teamData.get(currentTeam).group_id);
+    }
 
 
+    private void filterAnswerClicked() {
+        handleTimer(0, false);
+        filterOption.setVisibility(View.GONE);
+        teamData.get(currentTeam).filterOption = false;
+        getFragmentActivity().gameManager.useFilterOption(teamData.get(currentTeam).group_id);
+
+        Question question =  questions.get(currentQuestion);
+
+        if(question.answer_option.equals("A") ||question.right_answer.equals("A") ){
+            optionOne.setVisibility(View.VISIBLE);
+        }else{
+            optionOne.setVisibility(View.GONE);
+        }
+
+        if(question.answer_option.equals("B") ||question.right_answer.equals("B") ){
+            optionTwo.setVisibility(View.VISIBLE);
+        }else{
+            optionTwo.setVisibility(View.GONE);
+        }
+
+        if(question.answer_option.equals("C") ||question.right_answer.equals("C") ){
+            optionThree.setVisibility(View.VISIBLE);
+        }else{
+            optionThree.setVisibility(View.GONE);
+        }
+
+        if(question.answer_option.equals("D") ||question.right_answer.equals("D") ){
+            optionFour.setVisibility(View.VISIBLE);
+        }else{
+            optionFour.setVisibility(View.GONE);
+        }
+    }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == audienceOption.getId()) {
-            handleTimer(0, false);
-        } else if (v.getId() == audienceOption.getId()) {
-            handleTimer(0, false);
-
-        } else if (v.getId() == halfOption.getId()) {
-            handleTimer(0, false);
-
+            askAudience();
+        } else if (v.getId() == filterOption.getId()) {
+            filterAnswerClicked();
         } else if (v.getId() == optionOne.getId()) {
-            handleTimer(0, false);
-
+            checkAnswer("A");
         } else if (v.getId() == optionTwo.getId()) {
-            handleTimer(0, false);
-
+            checkAnswer("B");
         } else if (v.getId() == optionThree.getId()) {
-            handleTimer(0, false);
-
+            checkAnswer("C");
         } else if (v.getId() == optionFour.getId()) {
-            handleTimer(0, false);
-
+            checkAnswer("D");
         } else if (v.getId() == timerButton.getId()) {
             if (timerButton.getText().equals(getString(R.string.general_done_button))) {
                 if (isAnswered) {
@@ -230,5 +260,10 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
                 handleTimer(0, false);
             }
         }
+    }
+
+    @Override
+    public boolean onFragmentBackPressed() {
+        return false;
     }
 }

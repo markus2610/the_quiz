@@ -6,6 +6,7 @@
                 android:background="@color/transparent">
 
     <RelativeLayout
+            android:id="@+id/round_start_button"
             android:layout_width="800dp"
             android:layout_height="400dp"
             android:gravity="center"

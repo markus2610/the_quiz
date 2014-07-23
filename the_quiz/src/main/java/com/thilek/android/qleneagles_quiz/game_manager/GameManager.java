@@ -95,6 +95,30 @@ public class GameManager {
         }
     }
 
+    public void useAudienceOption(long group_id) {
+        if (gameData != null) {
+            if (gameData.teams.containsKey(group_id)) {
+                gameData.teams.get(group_id).helpOption = false;
+            } else {
+                Toasts.customShortToast(activity, R.string.team_not_found);
+            }
+        } else {
+            Toasts.customShortToast(activity, R.string.game_not_initialized);
+        }
+    }
+
+    public void useFilterOption(long group_id) {
+        if (gameData != null) {
+            if (gameData.teams.containsKey(group_id)) {
+                gameData.teams.get(group_id).filterOption = false;
+            } else {
+                Toasts.customShortToast(activity, R.string.team_not_found);
+            }
+        } else {
+            Toasts.customShortToast(activity, R.string.game_not_initialized);
+        }
+    }
+
     public ArrayList<TeamData> getAllTeams() {
 
         ArrayList<TeamData> teamData = new ArrayList<TeamData>();

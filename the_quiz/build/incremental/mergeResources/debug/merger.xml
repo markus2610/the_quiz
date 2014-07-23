@@ -210,9 +210,9 @@
                 </color>
                 <color name="dark_black_overlay" >#99000000
                 </color>
-                <color name="white_background" >#ffffff
-                </color>
                 <color name="titlebar_text_color" >#ffffff
+                </color>
+                <color name="white" >#ffffff
                 </color>
                 <color name="timer_font_color" >#D1212D
                 </color>
@@ -266,17 +266,19 @@
                 </string>
                 <string name="home_settings" >Settings
                 </string>
-                <string name="round_text" >Round ***
-                </string>
                 <string name="empty_player_list" >Please add new players
+                </string>
+                <string name="round_text" >Round ***
                 </string>
                 <string name="round_completed" >Round completed
                 </string>
                 <string name="default_set" >New Set
                 </string>
-                <string name="right_answer_selected" >Congratulation, your team moves to next level
+                <string name="click_to_start" >Click to Start
                 </string>
                 <string name="option_four_title" >Option D
+                </string>
+                <string name="right_answer_selected" >Congratulation, your team moves to next level
                 </string>
                 <string name="team_not_found" >Team not found
                 </string>
@@ -320,6 +322,8 @@
                 </string>
                 <string name="delete_question_successful" >Successfully deleted question
                 </string>
+                <string name="game_over_status" >Create new game to play again
+                </string>
                 <string name="default_group" >New Group
                 </string>
                 <string name="fail_export" >Failed to export the file. Please check your file content.
@@ -336,15 +340,15 @@
                 </string>
                 <string name="last_name_title" >Last name
                 </string>
-                <string name="app_name" >TheQuiz
-                </string>
                 <string name="failed_create_group" >Failed to create group
+                </string>
+                <string name="app_name" >TheQuiz
                 </string>
                 <string name="not_enough_questions_long" >Insufficient questions for round ***
                 </string>
-                <string name="home_info" >Info
-                </string>
                 <string name="empty_set_type" >Click to add a type
+                </string>
+                <string name="home_info" >Info
                 </string>
                 <string name="not_enough_questions_short" >WARNING
                 </string>
@@ -399,7 +403,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 25sp
@@ -426,7 +430,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 30sp
@@ -488,7 +492,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 20sp
@@ -500,7 +504,7 @@ bold
 
                 <style name="question_spinner_text" >
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 20sp
@@ -559,7 +563,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 20sp
@@ -574,7 +578,7 @@ bold
 center_vertical|left
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 12sp
@@ -601,7 +605,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 25sp
@@ -628,7 +632,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 20sp
@@ -682,7 +686,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 16sp
@@ -709,7 +713,7 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 25sp
@@ -721,7 +725,7 @@ bold
 
                 <style name="question_edit_text_text" >
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 20sp
@@ -735,7 +739,7 @@ bold
                     name="AppAppearanceSpinnerItem"
                     parent="android:TextAppearance.Widget.TextView.SpinnerItem" >
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                 </style>
 
@@ -756,23 +760,13 @@ center_vertical|center_horizontal
 1.5
                     </item>
                     <item name="android:textColor">
-@color/white_background
+@color/white
                     </item>
                     <item name="android:textSize">
 20sp
                     </item>
                     <item name="android:textStyle">
 italic
-                    </item>
-                </style>
-
-                <style
-                    name="AppTheme"
-                    parent="android:Theme.Holo.Light.NoActionBar" >
-
-                    <!-- Customize your theme here. -->
-                    <item name="android:spinnerItemStyle">
-@style/AppSpinnerItem
                     </item>
                 </style>
 
@@ -788,6 +782,16 @@ center
                     </item>
                     <item name="android:textStyle">
 italic
+                    </item>
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="android:Theme.Holo.Light.NoActionBar" >
+
+                    <!-- Customize your theme here. -->
+                    <item name="android:spinnerItemStyle">
+@style/AppSpinnerItem
                     </item>
                 </style>
             </file>

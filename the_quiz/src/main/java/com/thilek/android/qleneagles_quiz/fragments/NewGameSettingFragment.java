@@ -28,7 +28,7 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
     private Button createGameButton, removeGroupButton, cancelButton;
     private ImageView addTeamButton;
 
-    private ListView selectGroupList, selectedGroupList;
+    private ListView selectionGroupList, sameGroupList;
     private Dialog groupListDialog, removeGroupDialog;
 
     private GroupListAdapter groupListAdapter;
@@ -51,9 +51,10 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
         vFragmentView = inflater.inflate(R.layout.fragment_game_set_up, container, false);
 
         emptyText = (TextView) vFragmentView.findViewById(R.id.empty_list_text);
-        selectedGroupList = (ListView) vFragmentView.findViewById(R.id.group_selected_list);
-        selectedGroupList.setOnItemLongClickListener(this);
-        selectedGroupList.setEmptyView(emptyText);
+
+        sameGroupList = (ListView) vFragmentView.findViewById(R.id.group_selected_list);
+        sameGroupList.setOnItemLongClickListener(this);
+        sameGroupList.setEmptyView(emptyText);
 
 
         createGameButton = (Button) vFragmentView.findViewById(R.id.create_game_button);
@@ -65,8 +66,8 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
         groupListDialog.setContentView(R.layout.dialog_group_list);
         groupListDialog.setCanceledOnTouchOutside(false);
 
-        selectGroupList = (ListView) groupListDialog.findViewById(R.id.group_selection_list);
-        selectGroupList.setOnItemClickListener(this);
+        selectionGroupList = (ListView) groupListDialog.findViewById(R.id.group_selection_list);
+        selectionGroupList.setOnItemClickListener(this);
 
 
         removeGroupDialog = new Dialog(getActivity(), R.style.custom_app_dialog);
@@ -94,14 +95,14 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
 
     private void removeGroup(Group group) {
         getFragmentActivity().gameManager.removeTeam(group);
-        selectedGroupList.setAdapter(new GroupListAdapter(getFragmentActivity(), getFragmentActivity().gameManager.getAllGroups()));
+        sameGroupList.setAdapter(new GroupListAdapter(getFragmentActivity(), getFragmentActivity().gameManager.getAllGroups()));
         handleCreateButton();
 
         groupListDialog.dismiss();
     }
 
     private void handleCreateButton() {
-        if (selectedGroupList.getCount() < 1) {
+        if (sameGroupList.getCount() < 1) {
             createGameButton.setVisibility(View.GONE);
         } else {
             createGameButton.setVisibility(View.VISIBLE);
@@ -131,12 +132,9 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
             case GET_ALL_GROUPS: {
                 ArrayList<Group> groups = (ArrayList<Group>) object;
 
-                if (groups.size() == 0) {
-                    emptyText.setVisibility(View.VISIBLE);
-                } else {
-                    emptyText.setVisibility(View.GONE);
+                if (groups.size() != 0) {
                     groupListAdapter = new GroupListAdapter(getActivity(), groups);
-                    selectGroupList.setAdapter(groupListAdapter);
+                    selectionGroupList.setAdapter(groupListAdapter);
                 }
             }
             break;
@@ -157,7 +155,7 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v.getId() == addTeamButton.getId()) {
-            if (groupListAdapter.getCount() < 1)
+            if (groupListAdapter == null || groupListAdapter.getCount() < 1)
                 Toasts.customShortToast(getActivity(), R.string.no_groups);
             else
                 groupListDialog.show();
@@ -174,11 +172,11 @@ public class NewGameSettingFragment extends GameFragment implements View.OnClick
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (parent.getId() == selectGroupList.getId()) {
+        if (parent.getId() == selectionGroupList.getId()) {
             Group group = (Group) parent.getAdapter().getItem(position);
             getFragmentActivity().gameManager.addTeam(group);
 
-            selectedGroupList.setAdapter(new GroupListAdapter(getFragmentActivity(), getFragmentActivity().gameManager.getAllGroups()));
+            sameGroupList.setAdapter(new GroupListAdapter(getFragmentActivity(), getFragmentActivity().gameManager.getAllGroups()));
             handleCreateButton();
 
             groupListDialog.dismiss();

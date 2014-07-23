@@ -60,6 +60,7 @@
 
 
                 <EditText
+                        style="@style/question_edit_text_text"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:gravity="left"
@@ -104,6 +105,7 @@
 
 
                 <EditText
+                        style="@style/question_edit_text_text"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:gravity="left"
@@ -148,6 +150,7 @@
 
 
                 <EditText
+                        style="@style/question_edit_text_text"
                         android:layout_width="fill_parent"
                         android:layout_height="40dp"
                         android:gravity="left"

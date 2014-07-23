@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.thilek.android.qleneagles_quiz.AppConstants;
 import com.thilek.android.qleneagles_quiz.R;
@@ -27,6 +28,8 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
     private View vFragmentView;
 
     private TextView roundNumberText, roundStatusMessage;
+
+    private RelativeLayout startButton;
 
     private int currentRound = 0;
 
@@ -58,6 +61,9 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
 
         vFragmentView = inflater.inflate(R.layout.fragment_round, container, false);
 
+        startButton = (RelativeLayout) vFragmentView.findViewById(R.id.round_start_button);
+        startButton.setOnClickListener(this);
+
         roundNumberText = (TextView) vFragmentView.findViewById(R.id.round_text);
         roundStatusMessage = (TextView) vFragmentView.findViewById(R.id.loading_message);
 
@@ -68,13 +74,12 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == roundNumberText.getId()) {
-            if (roundNumberText.getText().equals(getString(R.string.game_over)) && roundNumberText.getText().equals(getString(R.string.not_enough_questions_short))) {
+        if (v.getId() == startButton.getId()) {
+            if (roundNumberText.getText().equals(getString(R.string.game_over)) || roundNumberText.getText().equals(getString(R.string.not_enough_questions_short))) {
                 getFragmentActivity().finish();
             } else if (roundNumberText.getText().equals(getString(R.string.general_please_wait_string))) {
                 Toasts.customShortToast(getActivity(), R.string.general_please_wait_string);
             } else {
-
                 startRound();
             }
         }
@@ -104,6 +109,8 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
                 roundNumber = roundNumber.replace("***", String.valueOf(currentRound));
                 roundNumberText.setText(roundNumber);
 
+                roundStatusMessage.setText(getString(R.string.click_to_start));
+
             } else {
                 Toasts.customShortToast(getActivity(), R.string.special_round);
 
@@ -112,6 +119,7 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
             }
         } else {
             roundNumberText.setText(getString(R.string.game_over));
+            roundStatusMessage.setText(getString(R.string.game_over_status));
         }
 
     }
@@ -124,6 +132,7 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
 
     @Override
     public void onTaskStarted(int taskID, Object object) {
+        roundNumberText.setText(getString(R.string.general_please_wait_string));
         roundStatusMessage.setText(getString(R.string.loading_questions));
     }
 
