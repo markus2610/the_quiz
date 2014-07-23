@@ -74,6 +74,8 @@
     <string name="option_two_title">Option B</string>
     <string name="problem_loading_question">Problem loading question.</string>
     <string name="question_title">Question</string>
+    <string name="question_unused">Unused</string>
+    <string name="question_used">Used</string>
     <string name="remove_group_button">Remove</string>
     <string name="remove_group_message">Do you want to remove *** from the game ?</string>
     <string name="remove_question_message">Do you want to remove this question from the list ?</string>
@@ -85,6 +87,7 @@
     <string name="special_round">Knock Out Round</string>
     <string name="start_button_text">Start</string>
     <string name="start_game_button">Create Game</string>
+    <string name="status_title">Status</string>
     <string name="team_added">New team added</string>
     <string name="team_already_added">Team already added</string>
     <string name="team_not_found">Team not found</string>
@@ -216,14 +219,21 @@
     <style name="question_list_text">
         <item name="android:gravity">center_vertical|left</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="question_spinner_text">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="question_status_list_text">
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">italic</item>
     </style>
 
     <style name="question_text">
@@ -233,7 +243,7 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1.5</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 

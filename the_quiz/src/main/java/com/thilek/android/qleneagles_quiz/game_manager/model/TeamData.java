@@ -32,8 +32,8 @@ public class TeamData {
     public TeamData(long id) {
         this.group = AppContext.matrixFactory.getGroupMatrix().getGroupByID(id);
         this.group_id = id;
-        this.helpOption = false;
-        this.filterOption = false;
+        this.helpOption = true;
+        this.filterOption = true;
         this.isActive = true;
         this.score = 0;
         this.set_id = 0;
@@ -43,8 +43,8 @@ public class TeamData {
     public TeamData(Group group) {
         this.group = group;
         this.group_id = group._id;
-        this.helpOption = false;
-        this.filterOption = false;
+        this.helpOption = true;
+        this.filterOption = true;
         this.isActive = true;
         this.score = 0;
         this.set_id = 0;

@@ -28,11 +28,13 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
     private Spinner answerSpinner,secondOptionSpinner, difficultySpinner;
     private Question question;
     private ImageView editIcon;
+    private Switch statusSwitch;
 
 
     private ArrayAdapter<String> answerAdapter,secondOptionAdapter, difficultyAdapter;
 
     private String[] answerOption = {"A", "B", "C", "D"};
+
     private String[] difficultyOption = {String.valueOf(Question.DIFFICULTY_LEVEL_1), String.valueOf(Question.DIFFICULTY_LEVEL_2), String.valueOf(Question.DIFFICULTY_LEVEL_3), String.valueOf(Question.DIFFICULTY_LEVEL_4),
             String.valueOf(Question.DIFFICULTY_LEVEL_5), String.valueOf(Question.DIFFICULTY_LEVEL_6), String.valueOf(Question.DIFFICULTY_LEVEL_7),
             String.valueOf(Question.DIFFICULTY_LEVEL_8), String.valueOf(Question.DIFFICULTY_LEVEL_9), String.valueOf(Question.DIFFICULTY_LEVEL_10),
@@ -59,6 +61,8 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         answerText = (TextView) findViewById(R.id.right_answer_text);
         secondOptionText = (TextView) findViewById(R.id.second_answer_text);
         difficultyText = (TextView) findViewById(R.id.difficulty_text);
+
+        statusSwitch = (Switch) findViewById(R.id.question_status_switch);
 
         editIcon = (ImageView) findViewById(R.id.editButton);
 
@@ -156,6 +160,13 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         secondOptionSpinner.setSelection(secondOptionAdapter.getPosition(question.answer_option), false);
         difficultySpinner.setSelection(difficultyAdapter.getPosition(String.valueOf(question.difficulty)), false);
 
+        if(question.question_status == Question.UNUSED){
+            statusSwitch.setChecked(true);
+        }   else{
+            statusSwitch.setChecked(false);
+        }
+
+
     }
 
     private void getQuestionDetails() {
@@ -172,6 +183,13 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
         question.right_answer = String.valueOf(answerSpinner.getSelectedItem());
         question.answer_option = String.valueOf(secondOptionSpinner.getSelectedItem());
         question.difficulty = Integer.valueOf(String.valueOf(difficultySpinner.getSelectedItem()));
+
+        if(statusSwitch.isChecked()){
+            question.question_status = Question.UNUSED;
+        }   else{
+            question.question_status = Question.USED;
+        }
+
     }
 
     public void onQuestionDoneClicked(View view) {
@@ -211,6 +229,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
             answerSwitch.showPrevious();
             secondOptionSwitch.showPrevious();
             difficultySwitch.showPrevious();
+            statusSwitch.setEnabled(true);
         } else {
             editIcon.setActivated(true);
 
@@ -222,6 +241,7 @@ public class QuestionDetailActivity extends Activity implements TaskListener {
             answerSwitch.showNext();
             secondOptionSwitch.showNext();
             difficultySwitch.showNext();
+            statusSwitch.setEnabled(false);
         }
 
     }

@@ -98,17 +98,11 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
 
         currentRound = getArguments().getInt(ROUND);
 
-        if (currentQuestion == 0) {
-            NewGameSettingFragment newGameSettingFragment = NewGameSettingFragment.getInstance();
-            getFragmentManager().beginTransaction().replace(R.id.fragment_frame, newGameSettingFragment).commit();
-            Toasts.customShortToast(getActivity(), R.string.problem_loading_question);
-        } else {
-            questions = getFragmentActivity().gameManager.getQuestions(currentRound);
-            teamData = getFragmentActivity().gameManager.getActiveTeams();
+        questions.addAll(getFragmentActivity().gameManager.getQuestions(currentRound));
+        teamData.addAll(getFragmentActivity().gameManager.getActiveTeams());
 
-            loadTeamStatus(teamData.get(currentTeam));
-            loadQuestionStatus(questions.get(currentQuestion));
-        }
+        loadTeamStatus(teamData.get(currentTeam));
+        loadQuestionStatus(questions.get(currentQuestion));
 
     }
 
@@ -117,13 +111,13 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
         if (teamData.helpOption) {
             audienceOption.setVisibility(View.VISIBLE);
         } else {
-            audienceOption.setVisibility(View.GONE);
+            audienceOption.setVisibility(View.INVISIBLE);
         }
 
         if (teamData.filterOption) {
             filterOption.setVisibility(View.VISIBLE);
         } else {
-            filterOption.setVisibility(View.GONE);
+            filterOption.setVisibility(View.INVISIBLE);
         }
 
         teamName.setText(teamData.group.group_name);
@@ -141,8 +135,11 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
 
     private void nextTeam() {
         new SetUsedQuestionTask().execute(questions.get(currentQuestion));
+        resetOptions();
 
         if (currentTeam < teamData.size()) {
+            timerButton.setText(getString(R.string.start_button_text));
+
             currentTeam = currentTeam + 1;
             loadTeamStatus(teamData.get(currentTeam));
 
@@ -185,51 +182,70 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
         isAnswered = true;
 
         if (option.equals(questions.get(currentQuestion).right_answer)) {
-            nextTeam();
+            answeredRight();
         } else {
+            answeredWrong();
             getFragmentActivity().gameManager.knockedOut(teamData.get(currentTeam).group_id, currentRound);
         }
+
+        nextTeam();
+    }
+
+
+    private void answeredRight(){
+       Toasts.customLongToast(getActivity(),R.string.right_answer_selected);
+    }
+
+    private void answeredWrong(){
+        Toasts.customLongToast(getActivity(),R.string.wrong_answer_selected);
     }
 
 
     private void askAudience() {
         handleTimer(0, false);
-        audienceOption.setVisibility(View.GONE);
+        audienceOption.setVisibility(View.INVISIBLE);
         teamData.get(currentTeam).helpOption = false;
         getFragmentActivity().gameManager.useAudienceOption(teamData.get(currentTeam).group_id);
+    }
+
+    private void resetOptions(){
+        optionOne.setVisibility(View.VISIBLE);
+        optionTwo.setVisibility(View.VISIBLE);
+        optionThree.setVisibility(View.VISIBLE);
+        optionFour.setVisibility(View.VISIBLE);
     }
 
 
     private void filterAnswerClicked() {
         handleTimer(0, false);
-        filterOption.setVisibility(View.GONE);
+        filterOption.setVisibility(View.INVISIBLE);
         teamData.get(currentTeam).filterOption = false;
         getFragmentActivity().gameManager.useFilterOption(teamData.get(currentTeam).group_id);
 
-        Question question =  questions.get(currentQuestion);
+        Question question = questions.get(currentQuestion);
 
-        if(question.answer_option.equals("A") ||question.right_answer.equals("A") ){
+        if (question.answer_option.equals("A") || question.right_answer.equals("A")) {
             optionOne.setVisibility(View.VISIBLE);
-        }else{
-            optionOne.setVisibility(View.GONE);
+        } else {
+            optionOne.setVisibility(View.INVISIBLE);
         }
 
-        if(question.answer_option.equals("B") ||question.right_answer.equals("B") ){
+        if (question.answer_option.equals("B") || question.right_answer.equals("B")) {
             optionTwo.setVisibility(View.VISIBLE);
-        }else{
-            optionTwo.setVisibility(View.GONE);
+        } else {
+            optionTwo.setVisibility(View.INVISIBLE);
         }
 
-        if(question.answer_option.equals("C") ||question.right_answer.equals("C") ){
+        if (question.answer_option.equals("C") || question.right_answer.equals("C")) {
             optionThree.setVisibility(View.VISIBLE);
-        }else{
-            optionThree.setVisibility(View.GONE);
+        } else {
+            optionThree.setVisibility(View.INVISIBLE);
         }
 
-        if(question.answer_option.equals("D") ||question.right_answer.equals("D") ){
+        if (question.answer_option.equals("D") || question.right_answer.equals("D")) {
             optionFour.setVisibility(View.VISIBLE);
-        }else{
-            optionFour.setVisibility(View.GONE);
+        } else {
+            optionFour.setVisibility(View.INVISIBLE);
         }
     }
 

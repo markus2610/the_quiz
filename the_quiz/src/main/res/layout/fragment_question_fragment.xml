@@ -44,7 +44,7 @@
 
 
     <TextView
-            android:layout_below="@id/half_button"
+            android:layout_centerInParent="true"
             style="@style/question_text"
             android:id="@+id/question_text"
             android:layout_width="fill_parent"
@@ -52,7 +52,6 @@
             android:textIsSelectable="false"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
             android:gravity="center"/>
 
     <Button
@@ -84,7 +83,7 @@
                 android:id="@+id/option_one_button"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="16sp"
                 android:clickable="true"
                 android:layout_weight="1.0"/>
@@ -94,7 +93,7 @@
                 android:layout_height="60dp"
                 android:id="@+id/option_two_button"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:textSize="16sp"
                 android:clickable="true"
@@ -116,7 +115,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="16sp"
                 android:clickable="true"
                 android:layout_weight="1.0"/>
@@ -127,7 +126,7 @@
                 android:id="@+id/option_four_button"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:textSize="16sp"
                 android:clickable="true"

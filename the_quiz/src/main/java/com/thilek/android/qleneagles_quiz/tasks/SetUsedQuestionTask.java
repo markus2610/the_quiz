@@ -15,7 +15,7 @@ public class SetUsedQuestionTask extends AsyncTask<Question, Void, Boolean> {
     protected Boolean doInBackground(Question... arguments) {
 
         Question question = arguments[0];
-        question.question_status = Question.UNUSED;
+        question.question_status = Question.USED;
 
         long id = AppContext.matrixFactory.getQuestionMatrix().updateQuestion(question);
 

@@ -53,11 +53,14 @@
     <string name="right_answer_title">Answer</string>
     <string name="second_answer_title">Second Option</string>
     <string name="difficulty_title">Difficulty</string>
+    <string name="status_title">Status</string>
 
     <!-- Question Export Screen -->
     <string name="export_successful">Successfully exported all questions.</string>
     <string name="delete_question_successful">Successfully deleted question</string>
     <string name="remove_question_message">Do you want to remove this question from the list ?</string>
+    <string name="question_used">Used</string>
+    <string name="question_unused">Unused</string>
 
 
     <!-- Game Screen -->

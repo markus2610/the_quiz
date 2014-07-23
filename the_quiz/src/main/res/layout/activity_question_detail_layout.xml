@@ -371,6 +371,20 @@
 
             </ViewSwitcher>
 
+            <Switch
+                    style="@style/player_detail_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status_title"
+                    android:id="@+id/question_status_switch"
+                    android:layout_below="@+id/difficulty_switcher"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:textOn="@string/question_used"
+                    android:textOff="@string/question_unused"
+                    android:layout_marginLeft="20dp"
+                    android:enabled="false"/>
+
 
         </RelativeLayout>
     </ScrollView>
