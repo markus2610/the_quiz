@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.thilek.android.qleneagles_quiz.AppConstants;
 import com.thilek.android.qleneagles_quiz.R;
 import com.thilek.android.qleneagles_quiz.database.models.Question;
+import com.thilek.android.qleneagles_quiz.game_manager.model.TeamData;
 import com.thilek.android.qleneagles_quiz.tasks.LoadQuestionsTask;
 import com.thilek.android.qleneagles_quiz.tasks.TaskListener;
 import com.thilek.android.qleneagles_quiz.views.Toasts;
@@ -75,7 +76,7 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         if (v.getId() == startButton.getId()) {
-            if (roundNumberText.getText().equals(getString(R.string.game_over)) || roundNumberText.getText().equals(getString(R.string.not_enough_questions_short))) {
+            if (roundNumberText.getText().equals(getString(R.string.has_winner)) ||roundNumberText.getText().equals(getString(R.string.game_over)) || roundNumberText.getText().equals(getString(R.string.not_enough_questions_short))) {
                 getFragmentActivity().finish();
             } else if (roundNumberText.getText().equals(getString(R.string.general_please_wait_string))) {
                 Toasts.customShortToast(getActivity(), R.string.general_please_wait_string);
@@ -110,6 +111,19 @@ public class RoundFragment extends GameFragment implements View.OnClickListener,
                 roundNumberText.setText(roundNumber);
 
                 roundStatusMessage.setText(getString(R.string.click_to_start));
+
+            } else if (getFragmentActivity().gameManager.getActiveTeams().size() == 1) {
+
+                TeamData winnerTeam =  getFragmentActivity().gameManager.getActiveTeams().get(0);
+
+                String message = getString(R.string.winner_team);
+                message = message.replace("***", String.valueOf(winnerTeam.group.group_name));
+
+                roundNumberText.setText(getString(R.string.has_winner));
+                roundStatusMessage.setText(message);
+
+                Toasts.customShortToast(getActivity(), message);
+
 
             } else {
                 Toasts.customShortToast(getActivity(), R.string.special_round);

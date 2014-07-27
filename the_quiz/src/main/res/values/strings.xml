@@ -78,6 +78,7 @@
     <string name="start_button_text">Start</string>
     <string name="choose_answer_first">Please select and answer first</string>
     <string name="round_completed">Round completed</string>
+    <string name="next_question">Next Question</string>
 
     <string name="right_answer_selected">Congratulation, your team moves to next level</string>
     <string name="wrong_answer_selected">I am sorry. It is a wrong answer</string>
@@ -88,6 +89,9 @@
     <string name="loading_questions">Initializing game</string>
     <string name="click_to_start">Click to Start</string>
     <string name="special_round">Knock Out Round</string>
+    <string name="winner_team">*** won the game</string>
+    <string name="has_winner">Winner</string>
+
 
     <!-- Error Messages -->
     <string name="no_groups">Please create some groups first</string>
@@ -96,5 +100,6 @@
     <string name="not_enough_questions_long">Insufficient questions for round ***</string>
     <string name="fail_export">Failed to export the file. Please check your file content.</string>
     <string name="delete_question_fail">Failed to delete question</string>
+    <string name="no_more_special_question">IT IS A TIE</string>
 
 </resources>

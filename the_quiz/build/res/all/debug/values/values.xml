@@ -59,13 +59,16 @@
     <string name="general_failed_update">Failed to Update</string>
     <string name="general_hours_string">hours</string>
     <string name="general_please_wait_string">Please wait</string>
+    <string name="has_winner">Winner</string>
     <string name="home_game">Start Game</string>
     <string name="home_groups">Groups</string>
     <string name="home_info">Info</string>
     <string name="home_settings">Settings</string>
     <string name="last_name_title">Last name</string>
     <string name="loading_questions">Initializing game</string>
+    <string name="next_question">Next Question</string>
     <string name="no_groups">Please create some groups first</string>
+    <string name="no_more_special_question">IT IS A TIE</string>
     <string name="not_enough_questions_long">Insufficient questions for round ***</string>
     <string name="not_enough_questions_short">WARNING</string>
     <string name="option_four_title">Option D</string>
@@ -92,6 +95,7 @@
     <string name="team_already_added">Team already added</string>
     <string name="team_not_found">Team not found</string>
     <string name="team_removed">Team removed</string>
+    <string name="winner_team">*** won the game</string>
     <string name="wrong_answer_selected">I am sorry. It is a wrong answer</string>
     <!-- From: file:/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/values/styles.xml -->
     <eat-comment />

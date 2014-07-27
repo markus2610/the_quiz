@@ -87,7 +87,7 @@ public class QuestionMatrix {
 
     }
 
-
+   /*
     public ArrayList<Question> getQuestionsDifficulty(int difficulty, int amount) {
 
         ArrayList<Question> groups = new ArrayList<Question>();
@@ -107,7 +107,29 @@ public class QuestionMatrix {
 
         return groups;
 
+    }     */
+
+    public ArrayList<Question> getQuestionsDifficulty(int difficulty, int amount) {
+
+        ArrayList<Question> questions = new ArrayList<Question>();
+
+        Cursor questionCursor = cupboard().withDatabase(CupboardSqliteHelper.getDatabase()).query(Question.class)
+                .withSelection(Question.DIFFICULTY + " = ? ", String.valueOf(difficulty)).getCursor();
+
+        QueryResultIterable<Question> clsQueryResultIterable = cupboard().withCursor(questionCursor).iterate(Question.class);
+        for (Question question : clsQueryResultIterable) {
+            questions.add(question);
+
+            if (questions.size() == amount) {
+                break;
+            }
+        }
+        clsQueryResultIterable.close();
+
+        return questions;
+
     }
+
 
 
 }

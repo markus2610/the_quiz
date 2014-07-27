@@ -2,6 +2,7 @@ package com.thilek.android.qleneagles_quiz.util;
 
 import android.text.TextUtils;
 import android.widget.EditText;
+import com.thilek.android.qleneagles_quiz.AppContext;
 
 import java.util.List;
 
@@ -32,4 +33,10 @@ public class ViewUtilities {
         }
         return false;
     }
+
+
+    public static float intToPixelFloat(int number) {
+        return (number * AppContext.getContext().getResources().getDisplayMetrics().density);
+    }
+
 }

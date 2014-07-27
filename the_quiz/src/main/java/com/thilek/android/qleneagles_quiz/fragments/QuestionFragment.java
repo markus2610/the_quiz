@@ -1,18 +1,25 @@
 package com.thilek.android.qleneagles_quiz.fragments;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.thilek.android.qleneagles_quiz.AppConstants;
 import com.thilek.android.qleneagles_quiz.R;
 import com.thilek.android.qleneagles_quiz.database.models.Question;
 import com.thilek.android.qleneagles_quiz.game_manager.model.TeamData;
 import com.thilek.android.qleneagles_quiz.tasks.SetUsedQuestionTask;
+import com.thilek.android.qleneagles_quiz.util.ViewUtilities;
 import com.thilek.android.qleneagles_quiz.views.Toasts;
 
 import java.util.ArrayList;
@@ -24,9 +31,13 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
 
     public static final String ROUND = "ROUND";
 
+
+    private static final int BEEP_VOLUME = 100;
+    private static final int BEEP_DURATION = 200;
+
     private View vFragmentView;
 
-    private ImageView filterOption, audienceOption;
+    private ImageView filterOption, audienceOption, presenterIcon;
     private TextView teamName, questionText;
 
     private Button optionOne, optionTwo, optionThree, optionFour, timerButton;
@@ -41,6 +52,7 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
     private boolean isAnswered = false;
 
     private CountDownTimer countDownTimer;
+
 
     public static QuestionFragment getInstance() {
         QuestionFragment questionFragment = new QuestionFragment();
@@ -68,6 +80,8 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
         super.onCreateView(inflater, container, savedInstanceState);
 
         vFragmentView = inflater.inflate(R.layout.fragment_question_fragment, container, false);
+
+        presenterIcon = (ImageView) vFragmentView.findViewById(R.id.result_question_icon);
 
         filterOption = (ImageView) vFragmentView.findViewById(R.id.half_button);
         filterOption.setOnClickListener(this);
@@ -137,7 +151,7 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
         new SetUsedQuestionTask().execute(questions.get(currentQuestion));
         resetOptions();
 
-        if (currentTeam < teamData.size()) {
+        if (currentTeam < (teamData.size() - 1)) {
             timerButton.setText(getString(R.string.start_button_text));
 
             currentTeam = currentTeam + 1;
@@ -161,6 +175,8 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
                 @Override
                 public void onTick(long millisUntilFinished) {
                     timerButton.setText((millisUntilFinished / 1000) + " s");
+                    ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, BEEP_VOLUME);
+                    toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, BEEP_DURATION);
                 }
 
                 @Override
@@ -187,17 +203,17 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
             answeredWrong();
             getFragmentActivity().gameManager.knockedOut(teamData.get(currentTeam).group_id, currentRound);
         }
-
-        nextTeam();
     }
 
 
-    private void answeredRight(){
-       Toasts.customLongToast(getActivity(),R.string.right_answer_selected);
+    private void answeredRight() {
+        loadAndAnimatePresenterIcon(true);
+        Toasts.customLongToast(getActivity(), R.string.right_answer_selected);
     }
 
-    private void answeredWrong(){
-        Toasts.customLongToast(getActivity(),R.string.wrong_answer_selected);
+    private void answeredWrong() {
+        loadAndAnimatePresenterIcon(false);
+        Toasts.customLongToast(getActivity(), R.string.wrong_answer_selected);
     }
 
 
@@ -208,7 +224,7 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
         getFragmentActivity().gameManager.useAudienceOption(teamData.get(currentTeam).group_id);
     }
 
-    private void resetOptions(){
+    private void resetOptions() {
         optionOne.setVisibility(View.VISIBLE);
         optionTwo.setVisibility(View.VISIBLE);
         optionThree.setVisibility(View.VISIBLE);
@@ -277,6 +293,66 @@ public class QuestionFragment extends GameFragment implements View.OnClickListen
             }
         }
     }
+
+
+    private void loadAndAnimatePresenterIcon(final boolean isRightAnswer) {
+
+        presenterIcon.setVisibility(View.VISIBLE);
+        presenterIcon.setActivated(isRightAnswer);
+
+
+        Animation translateAnimation = new TranslateAnimation(ViewUtilities.intToPixelFloat(300), 0.0f, 0.0f, 0.0f);
+        translateAnimation.setDuration(2000);
+
+        translateAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                presenterIcon.setLayoutParams(params);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                presenterIcon.setLayoutParams(params);
+
+                MediaPlayer mp;
+
+                if (isRightAnswer) {
+                    mp = MediaPlayer.create(getActivity(), R.raw.right);
+                } else {
+                    mp = MediaPlayer.create(getActivity(), R.raw.wrong);
+                }
+
+
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+
+                        presenterIcon.setVisibility(View.GONE);
+                        nextTeam();
+                    }
+
+                });
+                mp.start();
+
+
+            }
+        });
+
+        presenterIcon.setAnimation(translateAnimation);
+
+
+    }
+
 
     @Override
     public boolean onFragmentBackPressed() {

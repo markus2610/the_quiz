@@ -380,8 +380,8 @@
                     android:layout_below="@+id/difficulty_switcher"
                     android:layout_marginTop="20dp"
                     android:layout_alignParentLeft="true"
-                    android:textOn="@string/question_used"
-                    android:textOff="@string/question_unused"
+                    android:textOff="@string/question_used"
+                    android:textOn="@string/question_unused"
                     android:layout_marginLeft="20dp"
                     android:enabled="false"/>
 
