@@ -16,7 +16,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/add_button"
+                android:src="@drawable/audience"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:clickable="true"
@@ -28,7 +28,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
-                android:src="@drawable/add_button"
+                android:src="@drawable/filter"
                 android:layout_alignParentTop="true"
                 android:layout_toLeftOf="@+id/audience_button"
                 android:clickable="true"
@@ -151,7 +151,7 @@
         <ImageView android:id="@+id/result_question_icon" android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_alignParentRight="true"
-                   android:src="@drawable/right_answer"
+                   android:src="@drawable/presenter_src"
                    android:visibility="gone"/>
     </RelativeLayout>
 

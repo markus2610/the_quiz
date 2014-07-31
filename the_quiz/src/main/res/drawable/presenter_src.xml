@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/wrong_smurf" android:state_activated="false"/>
+    <item android:drawable="@drawable/right_answer" android:state_activated="true"/>
+
+</selector>

@@ -881,6 +881,26 @@ true
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/raw/right.mp3"
                 qualifiers=""
                 type="raw" />
+            <file
+                name="presenter_src"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/presenter_src.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="wrong_smurf"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/wrong_smurf.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="filter"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/filter.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="audience"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/audience.png"
+                qualifiers=""
+                type="drawable" />
         </source>
         <source path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/build/res/rs/debug" />
         <source path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/build/res/generated/debug" />

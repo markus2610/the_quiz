@@ -39,19 +39,23 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int app_background=0x7f020001;
         public static final int apptheme_btn_default_disabled_holo_light=0x7f020002;
         public static final int apptheme_btn_default_normal_holo_light=0x7f020003;
-        public static final int edit_button=0x7f020004;
-        public static final int edit_icon=0x7f020005;
-        public static final int edit_icon_activated=0x7f020006;
-        public static final int group_wood=0x7f020007;
-        public static final int holo_button=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int image_background=0x7f02000a;
-        public static final int right_answer=0x7f02000b;
-        public static final int rounded_button=0x7f02000c;
-        public static final int rounded_sort_button_background_active=0x7f02000d;
-        public static final int rounded_sort_button_background_inactive=0x7f02000e;
-        public static final int rounded_white_border=0x7f02000f;
-        public static final int toast_background=0x7f020010;
+        public static final int audience=0x7f020004;
+        public static final int edit_button=0x7f020005;
+        public static final int edit_icon=0x7f020006;
+        public static final int edit_icon_activated=0x7f020007;
+        public static final int filter=0x7f020008;
+        public static final int group_wood=0x7f020009;
+        public static final int holo_button=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int image_background=0x7f02000c;
+        public static final int presenter_src=0x7f02000d;
+        public static final int right_answer=0x7f02000e;
+        public static final int rounded_button=0x7f02000f;
+        public static final int rounded_sort_button_background_active=0x7f020010;
+        public static final int rounded_sort_button_background_inactive=0x7f020011;
+        public static final int rounded_white_border=0x7f020012;
+        public static final int toast_background=0x7f020013;
+        public static final int wrong_smurf=0x7f020014;
     }
     public static final class id {
         public static final int adding_group_button=0x7f080008;
