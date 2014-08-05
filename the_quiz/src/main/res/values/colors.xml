@@ -10,7 +10,7 @@
     <color name="titlebar_text_shadow_color">#000033</color>
 
     <color name="home_font_color">#ffffff</color>
-    <color name="timer_font_color">#D1212D</color>
+    <color name="timer_font_color">#02A1A3</color>
     <color name="blue_font_color">#7DEDFA</color>
 
     <!-- rounded button colors -->
@@ -19,5 +19,24 @@
 
     <color name="custom_button_active_start">#22000000</color>
     <color name="custom_button_active_end">#11000000</color>
+
+    <!-- dark rounded button colors -->
+    <color name="custom_dark_button_inactive_start">#CC000000</color>
+    <color name="custom_dark_button_inactive_end">#99000000</color>
+
+    <color name="custom_dark_button_active_start">#88000000</color>
+    <color name="custom_dark_button_active_end">#33000000</color>
+
+    <color name="custom_red_button_inactive_start">#CCEB0C11</color>
+    <color name="custom_red_button_inactive_end">#99EB0C11</color>
+
+    <color name="custom_red_button_active_start">#66EB0C11</color>
+    <color name="custom_red_button_active_end">#33EB0C11</color>
+
+    <color name="custom_green_button_inactive_start">#CC16C406</color>
+    <color name="custom_green_button_inactive_end">#9916C406</color>
+
+    <color name="custom_green_button_active_start">#5516C406</color>
+    <color name="custom_green_button_active_end">#3316C406</color>
 
 </resources>

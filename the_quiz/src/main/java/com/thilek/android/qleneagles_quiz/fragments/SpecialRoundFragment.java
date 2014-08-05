@@ -1,13 +1,19 @@
 package com.thilek.android.qleneagles_quiz.fragments;
 
+import android.app.Dialog;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,10 +42,12 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
     private static final int BEEP_VOLUME = 100;
     private static final int BEEP_DURATION = 200;
 
-    private ImageView filterOption, audienceOption,presenterIcon;
+    private ImageView filterOption, audienceOption, presenterIcon;
     private TextView teamName, questionText;
 
-    private Button optionOne, optionTwo, optionThree, optionFour, timerButton;
+    private Button optionOne, optionTwo, optionThree, optionFour, timerButton, dialogTimerButton;
+
+    private Dialog timerDialog;
 
     private int currentTeam = 0;
     private int currentQuestion = 0;
@@ -51,12 +59,13 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
 
     private boolean isAnswered = false;
 
-    private CountDownTimer countDownTimer;
+    private CountDownTimer countDownTimer, dialogDownTimer;
     private SingleButtonDialog singleButtonDialog;
 
     private GetSpecialQuestionsTask getSpecialQuestionsTask;
 
-    private RelativeLayout presenterLayout;
+
+    private static Handler uiThreadHandler;
 
 
     public static SpecialRoundFragment getInstance() {
@@ -72,7 +81,8 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
 
         vFragmentView = inflater.inflate(R.layout.fragment_question_fragment, container, false);
 
-        presenterLayout = (RelativeLayout) vFragmentView.findViewById(R.id.result_question_layout);
+        uiThreadHandler = new Handler(Looper.getMainLooper());
+
         presenterIcon = (ImageView) vFragmentView.findViewById(R.id.result_question_icon);
 
         filterOption = (ImageView) vFragmentView.findViewById(R.id.half_button);
@@ -94,6 +104,14 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
 
         timerButton = (Button) vFragmentView.findViewById(R.id.timer_button);
         timerButton.setOnClickListener(this);
+
+
+        timerDialog = new Dialog(getActivity(), R.style.custom_app_dialog);
+        timerDialog.setContentView(R.layout.dialog_timer_layout);
+        timerDialog.setCanceledOnTouchOutside(false);
+
+        dialogTimerButton = (Button) timerDialog.findViewById(R.id.dialog_timer_button);
+        dialogTimerButton.setOnClickListener(this);
 
 
         getSpecialQuestionsTask = new GetSpecialQuestionsTask(getActivity(), this);
@@ -206,15 +224,39 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
         if (start) {
             countDownTimer = new CountDownTimer(time, 1000) {
                 @Override
-                public void onTick(long millisUntilFinished) {
-                    timerButton.setText((millisUntilFinished / 1000) + " s");
-                    ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, BEEP_VOLUME);
-                    toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, BEEP_DURATION);
+                public void onTick(final long millisUntilFinished) {
+
+                    uiThreadHandler.post(new Runnable() {
+                        public void run() {
+                            long seconds = millisUntilFinished / 1000;
+
+                            timerButton.setTextColor(getResources().getColor(R.color.custom_green_button_inactive_start));
+                            timerButton.setText(seconds + " s");
+
+                            if (seconds < AppConstants.ALERT_TIMER_DURATION) {
+                                timerButton.setTextColor(getResources().getColor(R.color.custom_red_button_inactive_start));
+                                ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, BEEP_VOLUME);
+                                toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, BEEP_DURATION);
+                            }
+                        }
+                    });
                 }
 
                 @Override
                 public void onFinish() {
-                    timerButton.setText(getString(R.string.general_done_button));
+                    uiThreadHandler.post(new Runnable() {
+                        public void run() {
+                            timerButton.setTextColor(getResources().getColor(R.color.timer_font_color));
+                            timerButton.setText(getString(R.string.general_done_button));
+
+                            final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                            animation.setDuration(500); // duration - half a second
+                            animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                            animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                            animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+                            timerButton.startAnimation(animation);
+                        }
+                    });
                 }
             }.start();
         } else {
@@ -225,29 +267,111 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
         }
     }
 
+    private int getAnswerButton(String option) {
+
+        if (option.equals("A")) {
+            return optionOne.getId();
+        } else if (option.equals("B")) {
+            return optionTwo.getId();
+        } else if (option.equals("C")) {
+            return optionThree.getId();
+        } else if (option.equals("D")) {
+            return optionFour.getId();
+        }
+
+        return 0;
+    }
+
+    private int getRightAnswerButton(String option) {
+
+        if (option.equals("A")) {
+            return optionOne.getId();
+        } else if (option.equals("B")) {
+            return optionTwo.getId();
+        } else if (option.equals("C")) {
+            return optionThree.getId();
+        } else if (option.equals("D")) {
+            return optionFour.getId();
+        }
+
+        return 0;
+    }
+
+    private void handleDialogTimer(boolean start) {
+        if (start) {
+            dialogDownTimer = new CountDownTimer(AppConstants.HALF_TIMER_DURATION, 1000) {
+                @Override
+                public void onTick(final long millisUntilFinished) {
+
+                    uiThreadHandler.post(new Runnable() {
+                        public void run() {
+                            long seconds = millisUntilFinished / 1000;
+
+                            dialogTimerButton.setTextColor(getResources().getColor(R.color.custom_green_button_inactive_start));
+                            dialogTimerButton.setText(seconds + " s");
+
+                            if (seconds < AppConstants.ALERT_TIMER_DURATION) {
+                                dialogTimerButton.setTextColor(getResources().getColor(R.color.custom_red_button_inactive_start));
+                                ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, BEEP_VOLUME);
+                                toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, BEEP_DURATION);
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                public void onFinish() {
+                    uiThreadHandler.post(new Runnable() {
+                        public void run() {
+                            timerButton.setTextColor(getResources().getColor(R.color.timer_font_color));
+                            timerButton.setText(getString(R.string.general_done_button));
+
+                            dialogTimerButton.setTextColor(getResources().getColor(R.color.timer_font_color));
+                            dialogTimerButton.setText(getString(R.string.general_done_button));
+
+                            final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                            animation.setDuration(500); // duration - half a second
+                            animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                            animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                            animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+                            dialogTimerButton.startAnimation(animation);
+                        }
+                    });
+                }
+            }.start();
+        } else {
+            if (dialogDownTimer != null) {
+                dialogDownTimer.cancel();
+
+                dialogTimerButton.setTextColor(getResources().getColor(R.color.timer_font_color));
+                timerButton.setTextColor(getResources().getColor(R.color.timer_font_color));
+                dialogTimerButton.setText(getString(R.string.general_done_button));
+            }
+        }
+    }
+
 
     private void checkAnswer(String option) {
         handleTimer(0, false);
         isAnswered = true;
 
         if (option.equals(questions.get(currentQuestion).right_answer)) {
-            answeredRight();
+            answeredRight(option);
         } else {
-            answeredWrong();
+            answeredWrong(option, questions.get(currentQuestion).right_answer);
             getFragmentActivity().gameManager.knockedOut(teamData.get(currentTeam).group_id, currentRound);
         }
 
     }
 
 
-
-    private void answeredRight() {
-        loadAndAnimatePresenterIcon(true);
+    private void answeredRight(String option) {
+        handleAnswerAnimation(true, option, null);
         Toasts.customLongToast(getActivity(), R.string.right_answer_selected);
     }
 
-    private void answeredWrong() {
-        loadAndAnimatePresenterIcon(false);
+    private void answeredWrong(String option, String rightAnswer) {
+        handleAnswerAnimation(false, option, rightAnswer);
         Toasts.customLongToast(getActivity(), R.string.wrong_answer_selected);
     }
 
@@ -257,6 +381,7 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
         audienceOption.setVisibility(View.INVISIBLE);
         teamData.get(currentTeam).helpOption = false;
         getFragmentActivity().gameManager.useAudienceOption(teamData.get(currentTeam).group_id);
+        timerDialog.show();
     }
 
     private void resetOptions() {
@@ -316,6 +441,7 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
             checkAnswer("D");
         } else if (v.getId() == timerButton.getId()) {
             if (timerButton.getText().equals(getString(R.string.general_done_button))) {
+                timerButton.clearAnimation();
                 if (isAnswered) {
                     nextTeam();
                 } else {
@@ -323,9 +449,19 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
                 }
             } else if (timerButton.getText().equals(getString(R.string.start_button_text))) {
                 handleTimer(AppConstants.FULL_TIMER_DURATION, true);
+
+            } else {
+                handleTimer(0, false);
             }
-        } else {
-            handleTimer(0, false);
+        } else if (v.getId() == dialogTimerButton.getId()) {
+            if (dialogTimerButton.getText().equals(getString(R.string.general_done_button))) {
+                dialogTimerButton.clearAnimation();
+                timerDialog.dismiss();
+            } else if (timerButton.getText().equals(getString(R.string.start_button_text))) {
+                handleDialogTimer(true);
+            } else {
+                handleDialogTimer(false);
+            }
         }
     }
 
@@ -347,8 +483,14 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
 
     @Override
     public void onTaskCompleted(int taskID, Object object) {
-        ArrayList<Question> questions = (ArrayList<Question>) object;
-        initializeRound(questions);
+        final ArrayList<Question> questions = (ArrayList<Question>) object;
+
+        uiThreadHandler.post(new Runnable() {
+            public void run() {
+
+                initializeRound(questions);
+            }
+        });
     }
 
     @Override
@@ -359,18 +501,23 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
     @Override
     public void onTaskError(int taskID, Object object) {
 
-        String message = (String) object;
+        final String message = (String) object;
 
-        singleButtonDialog = new SingleButtonDialog(getActivity());
-        singleButtonDialog.init(message, getString(R.string.general_done_button));
-        singleButtonDialog.getButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                singleButtonDialog.hide();
-                getFragmentActivity().finish();
+        uiThreadHandler.post(new Runnable() {
+            public void run() {
+                singleButtonDialog = new SingleButtonDialog(getActivity());
+                singleButtonDialog.init(message, getString(R.string.general_done_button));
+                singleButtonDialog.getButton().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        singleButtonDialog.hide();
+                        getFragmentActivity().finish();
+                    }
+                });
+                singleButtonDialog.show();
+
             }
         });
-        singleButtonDialog.show();
 
     }
 
@@ -415,9 +562,81 @@ public class SpecialRoundFragment extends GameFragment implements View.OnClickLi
         presenterIcon.setAnimation(translateAnimation);
 
 
-
     }
 
+
+    private void handleAnswerAnimation(final boolean isRightAnswer, final String option, final String rightOption) {
+        MediaPlayer mediaPlayer;
+
+        final Button button = (Button) vFragmentView.findViewById(getAnswerButton(option));
+
+        if (isRightAnswer) {
+            mediaPlayer = MediaPlayer.create(getActivity(), R.raw.right);
+        } else {
+            mediaPlayer = MediaPlayer.create(getActivity(), R.raw.wrong);
+        }
+
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+
+                uiThreadHandler.post(new Runnable() {
+                    public void run() {
+
+
+                        if (isRightAnswer) {
+                            button.setBackgroundResource(R.drawable.custom_rounded_green_button);
+                        } else {
+                            button.setBackgroundResource(R.drawable.custom_rounded_red_button);
+
+                            final Button rightButton = (Button) vFragmentView.findViewById(getRightAnswerButton(rightOption));
+                            rightButton.setBackgroundResource(R.drawable.custom_rounded_green_button);
+                        }
+
+                        final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+                        animation.setDuration(100); // duration - half a second
+                        animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+                        animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+                        animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+                        button.startAnimation(animation);
+
+                    }
+                });
+
+            }
+        });
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+
+                uiThreadHandler.post(new Runnable() {
+                    public void run() {
+
+                        if (!isRightAnswer) {
+                            try {
+                                Thread.sleep(2000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            final Button rightButton = (Button) vFragmentView.findViewById(getRightAnswerButton(rightOption));
+                            rightButton.setBackgroundResource(R.drawable.custom_rounded_button);
+                        }
+
+                        button.clearAnimation();
+                        button.setBackgroundResource(R.drawable.custom_rounded_button);
+
+                        nextTeam();
+                    }
+                });
+            }
+
+        });
+        mediaPlayer.start();
+    }
 
 
 }

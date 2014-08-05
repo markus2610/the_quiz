@@ -77,7 +77,8 @@
                 android:layout_margin="10dp"
                 android:clickable="true"
                 android:onClick="onInfoClicked"
-                android:background="@drawable/holo_button">
+                android:background="@drawable/holo_button"
+                android:visibility="gone">
 
             <TextView
                     style="@style/home_option_text"

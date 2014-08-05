@@ -3,6 +3,8 @@ package com.thilek.android.qleneagles_quiz.activities;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,8 +30,8 @@ public class GroupDetailActivity extends ListActivity implements TaskListener {
     private static final int SAVE_GROUP = 3;
     private static final int DELETE_PLAYER = 4;
 
+    private static Handler uiThreadHandler;
 
-    private TextView emptyText;
     private EditText groupNameEditText;
     private ImageView groupPhoto;
     private PlayerListAdapter playerListAdapter;
@@ -41,7 +43,11 @@ public class GroupDetailActivity extends ListActivity implements TaskListener {
 
         setContentView(R.layout.activity_group_detail_layout);
 
-        emptyText = (TextView) findViewById(R.id.empty_list_text);
+        uiThreadHandler = new Handler(Looper.getMainLooper());
+
+        TextView emptyText = (TextView) findViewById(R.id.empty_list_text);
+        getListView().setEmptyView(emptyText);
+
         groupNameEditText = (EditText) findViewById(R.id.group_name);
         groupPhoto = (ImageView) findViewById(R.id.group_photo);
 
@@ -123,16 +129,16 @@ public class GroupDetailActivity extends ListActivity implements TaskListener {
 
         switch (taskID) {
             case GET_PLAYERS: {
-                ArrayList<Player> players = (ArrayList<Player>) object;
+                final ArrayList<Player> players = (ArrayList<Player>) object;
 
-                if (players.size() == 0) {
-                    emptyText.setVisibility(View.VISIBLE);
-                } else {
-                    emptyText.setVisibility(View.GONE);
-                    playerListAdapter = new PlayerListAdapter(GroupDetailActivity.this, players);
-                    setListAdapter(playerListAdapter);
+                if (players.size() != 0) {
+                    uiThreadHandler.post(new Runnable() {
+                        public void run() {
+                            playerListAdapter = new PlayerListAdapter(GroupDetailActivity.this, players);
+                            setListAdapter(playerListAdapter);
+                        }
+                    });
                 }
-
 
             }
             break;
@@ -142,8 +148,13 @@ public class GroupDetailActivity extends ListActivity implements TaskListener {
 
                 if (group != null) {
                     new GetPlayersByGroupTask(this, GET_PLAYERS).execute(group._id);
-                    groupNameEditText.setText(group.group_name);
-                    loadGroupPhoto(group.group_photo);
+
+                    uiThreadHandler.post(new Runnable() {
+                        public void run() {
+                            groupNameEditText.setText(group.group_name);
+                            loadGroupPhoto(group.group_photo);
+                        }
+                    });
                 }
 
             }

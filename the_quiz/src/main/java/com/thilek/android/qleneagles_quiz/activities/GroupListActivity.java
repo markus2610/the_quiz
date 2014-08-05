@@ -3,6 +3,8 @@ package com.thilek.android.qleneagles_quiz.activities;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,16 +22,16 @@ public class GroupListActivity extends ListActivity implements TaskListener {
 
     private static final int GET_GROUPS = 1;
 
-    private TextView emptyText;
     private GroupListAdapter groupListAdapter;
+    private static Handler uiThreadHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_group_layout);
 
-        emptyText = (TextView) findViewById(R.id.empty_list_text);
+        uiThreadHandler = new Handler(Looper.getMainLooper());
+        TextView emptyText = (TextView) findViewById(R.id.empty_list_text);
         getListView().setEmptyView(emptyText);
 
     }
@@ -69,12 +71,16 @@ public class GroupListActivity extends ListActivity implements TaskListener {
 
         switch (taskID) {
             case GET_GROUPS: {
-                ArrayList<Group> groups = (ArrayList<Group>) object;
+                final ArrayList<Group> groups = (ArrayList<Group>) object;
 
-                if (groups.size() != 0) {
-                    groupListAdapter = new GroupListAdapter(GroupListActivity.this, groups);
-                    setListAdapter(groupListAdapter);
-                }
+                uiThreadHandler.post(new Runnable() {
+                    public void run() {
+                        if (groups.size() != 0) {
+                            groupListAdapter = new GroupListAdapter(GroupListActivity.this, groups);
+                            setListAdapter(groupListAdapter);
+                        }
+                    }
+                });
             }
             break;
         }

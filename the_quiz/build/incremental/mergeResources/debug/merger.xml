@@ -59,21 +59,6 @@
                 qualifiers=""
                 type="drawable" />
             <file
-                name="rounded_button"
-                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/rounded_button.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="rounded_sort_button_background_active"
-                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/rounded_sort_button_background_active.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="rounded_sort_button_background_inactive"
-                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/rounded_sort_button_background_inactive.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
                 name="rounded_white_border"
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/rounded_white_border.xml"
                 qualifiers=""
@@ -200,29 +185,53 @@
                 qualifiers="" >
                 <color name="custom_button_active_end" >#11000000
                 </color>
-                <color name="custom_button_active_start" >#22000000
+                <color name="custom_red_button_inactive_end" >#99EB0C11
                 </color>
                 <color name="black_background" >#000000
                 </color>
-                <color name="home_font_color" >#ffffff
-                </color>
                 <color name="blue_font_color" >#7DEDFA
                 </color>
+                <color name="custom_button_inactive_start" >#88000000
+                </color>
+                <color name="custom_dark_button_inactive_end" >#99000000
+                </color>
+                <color name="transparent" >#00000000
+                </color>
+                <color name="custom_button_inactive_end" >#66000000
+                </color>
+                <color name="custom_dark_button_inactive_start" >#CC000000
+                </color>
+                <color name="custom_green_button_active_end" >#3316C406
+                </color>
+                <color name="custom_red_button_active_end" >#33EB0C11
+                </color>
+                <color name="custom_button_active_start" >#22000000
+                </color>
+                <color name="custom_green_button_inactive_start" >#CC16C406
+                </color>
+                <color name="home_font_color" >#ffffff
+                </color>
+                <color name="custom_red_button_active_start" >#66EB0C11
+                </color>
                 <color name="dark_black_overlay" >#99000000
+                </color>
+                <color name="custom_red_button_inactive_start" >#CCEB0C11
+                </color>
+                <color name="custom_dark_button_active_end" >#33000000
                 </color>
                 <color name="titlebar_text_color" >#ffffff
                 </color>
                 <color name="white" >#ffffff
                 </color>
-                <color name="timer_font_color" >#D1212D
-                </color>
-                <color name="custom_button_inactive_start" >#88000000
-                </color>
-                <color name="transparent" >#00000000
+                <color name="timer_font_color" >#02A1A3
                 </color>
                 <color name="black_overlay" >#66000000
                 </color>
-                <color name="custom_button_inactive_end" >#66000000
+                <color name="custom_dark_button_active_start" >#88000000
+                </color>
+                <color name="custom_green_button_inactive_end" >#9916C406
+                </color>
+                <color name="custom_green_button_active_start" >#5516C406
                 </color>
                 <color name="titlebar_text_shadow_color" >#000033
                 </color>
@@ -242,11 +251,11 @@
                 </string>
                 <string name="general_done_button" >Done
                 </string>
-                <string name="home_groups" >Groups
+                <string name="home_groups" >Groups Management
                 </string>
                 <string name="game_over" >Game Over
                 </string>
-                <string name="home_game" >Start Game
+                <string name="home_game" >Start New Game
                 </string>
                 <string name="general_coming_soon_string" >Coming Soon
                 </string>
@@ -266,13 +275,11 @@
                 </string>
                 <string name="option_three_title" >Option C
                 </string>
-                <string name="home_settings" >Settings
+                <string name="home_settings" >Question Settings
                 </string>
                 <string name="empty_player_list" >Please add new players
                 </string>
                 <string name="round_text" >Round ***
-                </string>
-                <string name="round_completed" >Round completed
                 </string>
                 <string name="default_set" >New Set
                 </string>
@@ -899,6 +906,86 @@ true
             <file
                 name="audience"
                 path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/audience.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_green_button_background_inactive"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_green_button_background_inactive.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_red_button_background_active"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_red_button_background_active.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_button_background_active"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_button_background_active.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_square_button_background_inactive"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_square_button_background_inactive.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_square_button"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_square_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_square_button_background_active"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_square_button_background_active.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_green_button"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_green_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_green_button_background_active"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_green_button_background_active.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_button"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_button_background_inactive"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_button_background_inactive.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_red_button"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_red_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_rounded_red_button_background_inactive"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_rounded_red_button_background_inactive.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="dialog_timer_layout"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/layout/dialog_timer_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="custom_dark_rounded_button"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_dark_rounded_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_dark_rounded_button_background_inactive"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_dark_rounded_button_background_inactive.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_dark_rounded_button_background_active"
+                path="/Users/tsilvadorai/Development/Workspace/AndroidDemoCollection/TheQuiz/the_quiz/src/main/res/drawable/custom_dark_rounded_button_background_active.xml"
                 qualifiers=""
                 type="drawable" />
         </source>

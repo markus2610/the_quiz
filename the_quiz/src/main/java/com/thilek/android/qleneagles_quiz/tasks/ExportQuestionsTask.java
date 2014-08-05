@@ -1,6 +1,7 @@
 package com.thilek.android.qleneagles_quiz.tasks;
 
 import android.os.AsyncTask;
+import com.thilek.android.qleneagles_quiz.AppContext;
 import com.thilek.android.qleneagles_quiz.database.reader.QuestionReader;
 
 import java.io.File;
@@ -33,6 +34,8 @@ public class ExportQuestionsTask extends AsyncTask<File, Void, Boolean> {
     protected Boolean doInBackground(File... arguments) {
 
         File filePath = arguments[0];
+
+        AppContext.matrixFactory.getQuestionMatrix().deleteAllQuestions();
 
         return getData(filePath);
     }

@@ -57,17 +57,18 @@
                 android:textIsSelectable="false"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:layout_above="@+id/timer_button"/>
 
         <Button
                 android:layout_above="@+id/answer_option_top"
                 style="@style/timer_text"
                 android:id="@+id/timer_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
                 android:textIsSelectable="false"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/start_button_text"
@@ -80,6 +81,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="65dp"
                 android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_above="@+id/answer_option_bottom">
 
             <Button
@@ -91,7 +94,9 @@
                     android:layout_marginLeft="15dp"
                     android:textSize="16sp"
                     android:clickable="true"
-                    android:layout_weight="1.0"/>
+                    android:textColor="@color/white"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/custom_rounded_button"/>
 
             <Button
                     android:layout_width="fill_parent"
@@ -102,15 +107,21 @@
                     android:layout_marginLeft="15dp"
                     android:textSize="16sp"
                     android:clickable="true"
-                    android:layout_weight="1.0"/>
+                    android:textColor="@color/white"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/custom_rounded_button"/>
 
         </LinearLayout>
 
         <LinearLayout
                 android:id="@+id/answer_option_bottom"
                 android:layout_width="fill_parent"
-                android:layout_height="70dp"
+                android:layout_height="65dp"
                 android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_alignParentBottom="true">
 
             <Button
@@ -123,7 +134,9 @@
                     android:layout_marginLeft="15dp"
                     android:textSize="16sp"
                     android:clickable="true"
-                    android:layout_weight="1.0"/>
+                    android:textColor="@color/white"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/custom_rounded_button"/>
 
             <Button
                     android:layout_width="fill_parent"
@@ -134,8 +147,10 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginLeft="15dp"
                     android:textSize="16sp"
+                    android:textColor="@color/white"
                     android:clickable="true"
-                    android:layout_weight="1.0"/>
+                    android:layout_weight="1.0"
+                    android:background="@drawable/custom_rounded_button"/>
 
         </LinearLayout>
     </RelativeLayout>

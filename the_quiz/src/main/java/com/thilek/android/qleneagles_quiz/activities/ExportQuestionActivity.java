@@ -5,6 +5,8 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +16,6 @@ import android.widget.TextView;
 import com.thilek.android.qleneagles_quiz.AppConstants;
 import com.thilek.android.qleneagles_quiz.R;
 import com.thilek.android.qleneagles_quiz.adapters.QuestionListAdapter;
-import com.thilek.android.qleneagles_quiz.database.models.Group;
 import com.thilek.android.qleneagles_quiz.database.models.Question;
 import com.thilek.android.qleneagles_quiz.tasks.DeleteQuestionTask;
 import com.thilek.android.qleneagles_quiz.tasks.ExportQuestionsTask;
@@ -27,18 +28,20 @@ import java.io.File;
 import java.util.ArrayList;
 
 
-public class ExportQuestionActivity extends ListActivity implements TaskListener, AdapterView.OnItemLongClickListener
-{
+public class ExportQuestionActivity extends ListActivity implements TaskListener, AdapterView.OnItemLongClickListener {
 
     private static final int GET_QUESTIONS = 1;
     private static final int EXPORT_QUESTIONS = 2;
     private static final int DELETE_QUESTION = 3;
 
 
-    private TextView emptyText, removeQuestionMessage;
+    private TextView  removeQuestionMessage;
     private QuestionListAdapter questionListAdapter;
     private FileSelectorDialog fileDialog;
     private Dialog removeQuestionDialog;
+
+
+    private static Handler uiThreadHandler;
 
 
     @Override
@@ -47,7 +50,10 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
 
         setContentView(R.layout.activity_export_questions_layout);
 
-        emptyText = (TextView) findViewById(R.id.empty_list_text);
+
+        uiThreadHandler = new Handler(Looper.getMainLooper());
+
+        TextView emptyText = (TextView) findViewById(R.id.empty_list_text);
 
         getListView().setEmptyView(emptyText);
         getListView().setOnItemLongClickListener(this);
@@ -64,7 +70,7 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
                 Question question = (Question) removeQuestionMessage.getTag();
                 removeQuestionDialog.dismiss();
 
-                new DeleteQuestionTask(ExportQuestionActivity.this,DELETE_QUESTION).execute(question);
+                new DeleteQuestionTask(ExportQuestionActivity.this, DELETE_QUESTION).execute(question);
             }
         });
 
@@ -72,9 +78,9 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
         cancelDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 removeQuestionDialog.dismiss();
+                removeQuestionDialog.dismiss();
             }
-        }) ;
+        });
 
     }
 
@@ -134,17 +140,16 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
 
         switch (taskID) {
             case GET_QUESTIONS: {
-                ArrayList<Question> questions = (ArrayList<Question>) object;
+                final ArrayList<Question> questions = (ArrayList<Question>) object;
 
-                if (questions.size() == 0) {
-                    emptyText.setVisibility(View.VISIBLE);
-                } else {
-                    emptyText.setVisibility(View.GONE);
-                    questionListAdapter = new QuestionListAdapter(ExportQuestionActivity.this, questions);
-                    setListAdapter(questionListAdapter);
-                }
-
-
+                uiThreadHandler.post(new Runnable() {
+                    public void run() {
+                        if (questions.size() != 0) {
+                            questionListAdapter = new QuestionListAdapter(ExportQuestionActivity.this, questions);
+                            setListAdapter(questionListAdapter);
+                        }
+                    }
+                });
             }
             break;
 
@@ -162,7 +167,7 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
             break;
 
             case DELETE_QUESTION: {
-                boolean exported = (Boolean) object;
+                final boolean exported = (Boolean) object;
 
                 if (exported) {
                     Toasts.customShortToast(this, R.string.delete_question_successful);
@@ -193,7 +198,6 @@ public class ExportQuestionActivity extends ListActivity implements TaskListener
         Question question = (Question) parent.getAdapter().getItem(position);
 
         removeQuestionMessage.setTag(question);
-
         removeQuestionDialog.show();
 
         return false;
